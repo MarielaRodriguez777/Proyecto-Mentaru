@@ -11,7 +11,7 @@ module.exports = {
     },
     configDB: {
         server: "localhost",
-        database: "VOLVODB",
+        database: "MENTARUDB",
         user: "sa",
         password: "MLRroot3",
         port: 1433,
