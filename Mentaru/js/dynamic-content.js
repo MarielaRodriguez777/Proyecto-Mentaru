@@ -9,6 +9,7 @@
     /* Preloader */
     $(window).on('load', function() {
         var preloaderFadeOutTime = 500;
+
         function hidePreloader() {
             var preloader = $('.spinner-wrapper');
             setTimeout(function() {
@@ -42,8 +43,8 @@
 
     // closes the responsive menu on menu item click
     $(".navbar-nav li a").on("click", function(event) {
-    if (!$(this).parent().hasClass('dropdown'))
-        $(".navbar-collapse").collapse('hide');
+        if (!$(this).parent().hasClass('dropdown'))
+            $(".navbar-collapse").collapse('hide');
     });
 
 
@@ -107,19 +108,19 @@
         iframe: {
             patterns: {
                 youtube: {
-                    index: 'youtube.com/', 
-                    id: function(url) {        
+                    index: 'youtube.com/',
+                    id: function(url) {
                         var m = url.match(/[\\?\\&]v=([^\\?\\&]+)/);
-                        if ( !m || !m[1] ) return null;
+                        if (!m || !m[1]) return null;
                         return m[1];
                     },
                     src: 'https://www.youtube.com/embed/%id%?autoplay=1'
                 },
                 vimeo: {
-                    index: 'vimeo.com/', 
-                    id: function(url) {        
+                    index: 'vimeo.com/',
+                    id: function(url) {
                         var m = url.match(/(https?:\/\/)?(www.)?(player.)?vimeo.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/);
-                        if ( !m || !m[5] ) return null;
+                        if (!m || !m[5]) return null;
                         return m[5];
                     },
                     src: 'https://player.vimeo.com/video/%id%?autoplay=1'
@@ -132,7 +133,8 @@
     /* Lightbox - Magnific Popup */
     $('.popup-with-move-anim').magnificPopup({
         type: 'inline',
-        fixedContentPos: false, /* keep it false to avoid html tag shift with margin-right: 17px */
+        fixedContentPos: false,
+        /* keep it false to avoid html tag shift with margin-right: 17px */
         fixedBgPos: true,
         overflowY: 'auto',
         closeBtnInside: true,
@@ -145,7 +147,7 @@
 
     /* Move Form Fields Label When User Types */
     // for input and textarea fields
-    $("input, textarea").keyup(function(){
+    $("input, textarea").keyup(function() {
         if ($(this).val() != '') {
             $(this).addClass('notEmpty');
         } else {

@@ -15,7 +15,7 @@ https.createServer({
 /*
 //start the server
 app.listen(config.configServer.port, () =>
-    console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`)
+	console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`)
 );
 */
 

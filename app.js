@@ -18,9 +18,9 @@ app.use('/mentaru/', apisViews);
 // Punto de inicio
 app.get('/mentaru/', (req, res) => {
     /*if (req.session.name) {
-        functionsMiscelaneos.redirectById(req, res);
+    	functionsMiscelaneos.redirectById(req, res);
     } else {
-        res.redirect('/Mentaru/view/index');
+    	res.redirect('/Mentaru/view/index');
     }*/
     res.redirect('/mentaru/');
 });

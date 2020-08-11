@@ -20,9 +20,9 @@ apisViews.use(express.static(path));
 
 apisViews.get('/estadisticas', (req, res) => {
     /*if (req.session.name) {
-        res.redirect('/mentaru')
+    	res.redirect('/mentaru')
     } else {
-        res.sendFile(path + '/index.html');
+    	res.sendFile(path + '/index.html');
     }*/
     res.sendFile(path + '/estadisticas.html');
 });
