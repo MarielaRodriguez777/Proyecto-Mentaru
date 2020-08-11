@@ -1,0 +1,23 @@
+{
+  "name": "Proyecto-Mentaru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarielaRodriguez777/Proyecto-Mentaru.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarielaRodriguez777/Proyecto-Mentaru/issues"
+  },
+  "homepage": "https://github.com/MarielaRodriguez777/Proyecto-Mentaru#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
