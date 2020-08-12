@@ -1,8 +1,8 @@
 "Rama">"Descripcion General": "Descripcion Especifica"
 
 Ejemplos:
-- APP>Pantallas, CSS, js: Pantalla GU_Hombe.html, Pantalla FA_Home.html, Estilo-Header.css, Funcionalidad en GU_Home.js y FA_Home.js
+- APP>Pantallas, CSS, js: <mensaje>
 
-- BD>Procedimientos, DMLs, Funciones: Procedimiento GU_GESTION_USUARIOS, Procedimiento GU_LOGIN, DMLs(Usuarios, Empleados, Personas, Vehiculos), Funcion FN_ENCRIPTAR_CONTRASENIA.
+- BD>Procedimientos, DMLs, Funciones: <mensaje>
 
-- Server> APIs, Miscelaneos, Querys: apisGU.js, functionMiscelaneos.js, functionGU.js
+- Server> APIs, Miscelaneos, Querys: <mensaje>

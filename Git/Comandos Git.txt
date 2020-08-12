@@ -47,5 +47,6 @@ git branch -h						Help
 git branch -d <Rama>				Borrar una Rama
 git merge <Rama>					Fusionar una rama en git
 									Para esto se debe estar en la rama a la cual se va a fusionar
+git fetch							Comunica con un repositorio remoto y obtiene toda la información que se encuentra en ese repositorio que no está en el tuyo actual y la almacena en tu base de datos local.
 
 
