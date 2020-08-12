@@ -3,7 +3,7 @@
 const crypto = require('crypto');
 
 
-// SE EXPORTAN DIVERSOS DATOS DE INTERES PARA LA CONEXION EN EL SERVIDOR 
+// SE EXPORTAN DIVERSOS DATOS DE INTERES PARA LA CONEXION EN EL SERVIDOR
 // Y LA REALIZAR LA CONEXION A LA BASE DE DATOS INSTALADO EN EL SERVIDOR
 module.exports = {
     configServer: {
@@ -13,7 +13,7 @@ module.exports = {
         server: "localhost",
         database: "MENTARUDB",
         user: "sa",
-        password: "MLRroot3",
+        password: "1234",
         port: 1433,
         parseJSON: true
     },
