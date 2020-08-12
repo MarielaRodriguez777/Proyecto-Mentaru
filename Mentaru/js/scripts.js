@@ -10,7 +10,7 @@
 
     /* Request Form */
     $("#requestForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
+        if (event.isDefaultPrevented()) {
             // handle the invalid form...
             rformError();
             rsubmitMSG(false, "Please fill all fields!");
@@ -23,16 +23,16 @@
 
     function rsubmitForm() {
         // initiate variables with form content
-		var name = $("#rname").val();
-		var email = $("#remail").val();
-		var phone = $("#rphone").val();
+        var name = $("#rname").val();
+        var email = $("#remail").val();
+        var phone = $("#rphone").val();
         var select = $("#rselect").val();
         var terms = $("#rterms").val();
-        
+
         $.ajax({
             type: "POST",
             url: "php/requestform-process.php",
-            data: "name=" + name + "&email=" + email + "&phone=" + phone + "&select=" + select + "&terms=" + terms, 
+            data: "name=" + name + "&email=" + email + "&phone=" + phone + "&select=" + select + "&terms=" + terms,
             success: function(text) {
                 if (text == "success") {
                     rformSuccess();
@@ -42,7 +42,7 @@
                 }
             }
         });
-	}
+    }
 
     function rformSuccess() {
         $("#requestForm")[0].reset();
@@ -54,7 +54,7 @@
         $("#requestForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $(this).removeClass();
         });
-	}
+    }
 
     function rsubmitMSG(valid, msg) {
         if (valid) {
@@ -64,11 +64,11 @@
         }
         $("#rmsgSubmit").removeClass().addClass(msgClasses).text(msg);
     }
-    
+
 
     /* Contact Form */
     $("#contactForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
+        if (event.isDefaultPrevented()) {
             // handle the invalid form...
             cformError();
             csubmitMSG(false, "Please fill all fields!");
@@ -81,14 +81,14 @@
 
     function csubmitForm() {
         // initiate variables with form content
-		var name = $("#cname").val();
-		var email = $("#cemail").val();
+        var name = $("#cname").val();
+        var email = $("#cemail").val();
         var message = $("#cmessage").val();
         var terms = $("#cterms").val();
         $.ajax({
             type: "POST",
             url: "php/contactform-process.php",
-            data: "name=" + name + "&email=" + email + "&message=" + message + "&terms=" + terms, 
+            data: "name=" + name + "&email=" + email + "&message=" + message + "&terms=" + terms,
             success: function(text) {
                 if (text == "success") {
                     cformSuccess();
@@ -98,7 +98,7 @@
                 }
             }
         });
-	}
+    }
 
     function cformSuccess() {
         $("#contactForm")[0].reset();
@@ -111,7 +111,7 @@
         $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $(this).removeClass();
         });
-	}
+    }
 
     function csubmitMSG(valid, msg) {
         if (valid) {
@@ -125,7 +125,7 @@
 
     /* Privacy Form */
     $("#privacyForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
+        if (event.isDefaultPrevented()) {
             // handle the invalid form...
             pformError();
             psubmitMSG(false, "Please fill all fields!");
@@ -138,15 +138,15 @@
 
     function psubmitForm() {
         // initiate variables with form content
-		var name = $("#pname").val();
-		var email = $("#pemail").val();
+        var name = $("#pname").val();
+        var email = $("#pemail").val();
         var select = $("#pselect").val();
         var terms = $("#pterms").val();
-        
+
         $.ajax({
             type: "POST",
             url: "php/privacyform-process.php",
-            data: "name=" + name + "&email=" + email + "&select=" + select + "&terms=" + terms, 
+            data: "name=" + name + "&email=" + email + "&select=" + select + "&terms=" + terms,
             success: function(text) {
                 if (text == "success") {
                     pformSuccess();
@@ -156,7 +156,7 @@
                 }
             }
         });
-	}
+    }
 
     function pformSuccess() {
         $("#privacyForm")[0].reset();
@@ -168,7 +168,7 @@
         $("#privacyForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $(this).removeClass();
         });
-	}
+    }
 
     function psubmitMSG(valid, msg) {
         if (valid) {
@@ -178,7 +178,7 @@
         }
         $("#pmsgSubmit").removeClass().addClass(msgClasses).text(msg);
     }
-    
+
 
     /* Back To Top Button */
     // create the back to top button
@@ -193,9 +193,9 @@
     });
 
 
-	/* Removes Long Focus On Buttons */
-	$(".button, a, button").mouseup(function() {
-		$(this).blur();
-	});
+    /* Removes Long Focus On Buttons */
+    $(".button, a, button").mouseup(function() {
+        $(this).blur();
+    });
 
 })(jQuery);
