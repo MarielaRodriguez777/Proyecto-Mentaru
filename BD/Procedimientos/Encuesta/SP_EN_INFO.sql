@@ -1,6 +1,7 @@
--- <=== Pantalla ===>
+-- <=== Encuesta ===>
 /* Requisitos de las acciones:
  * Estas acciones no tienen la utltima validacion, por lo tanto no habrá un codigo numero 6.
+ *
  * INSERT-INFO: @pidPersona, @pidMunicipio, idEstadoPaciente
  * Parametros Opcional: @pnumeroIdentidad, @pnumeroTelefono
  * Nota: Se debe crear un registro de la encuesta, con su respectivo codigo y fecha
@@ -19,7 +20,7 @@
  * INSERT-ANTECEDENTESNP: @pidPersona, @pcPersonaVivienda
  * Nota: Se debe actualizar el camo cPersonaVivienda de la table AntecedentesNP
 */
-CREATE OR ALTER PROCEDURE SP_SIGLAS_NOMBRE ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
+CREATE OR ALTER PROCEDURE SP_EN_INFO ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
 	-- Parametros de Entrada
 	@pidPersona					INT,
 	@pidMunicipio				INT,

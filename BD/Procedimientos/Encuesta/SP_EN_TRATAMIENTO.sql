@@ -1,4 +1,4 @@
--- <=== Pantalla ===>
+-- <=== Encuesta ===>
 /* Requisitos de las acciones:
  * <ACCION 1>: <@parametro1>, <@parametro2> ...
  * Parametros Opcional: <@parametro3>, <@parametro4> ...
@@ -7,7 +7,7 @@
  *
  * <ACCION 2>: ...
 */
-CREATE OR ALTER PROCEDURE SP_SIGLAS_NOMBRE ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
+CREATE OR ALTER PROCEDURE SP_EN_TRATAMIENTO ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
 	-- Parametros de Entrada
 	@paccion					VARCHAR(45),
 
