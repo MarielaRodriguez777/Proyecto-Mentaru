@@ -172,9 +172,9 @@ ALTER TABLE ListaAntecedentesP ADD
 -- Table ListaAntecedentesNP
 -- -----------------------------------------------------
 ALTER TABLE ListaAntecedentesNP ADD
-	CONSTRAINT fk_NoPatogia_has_AntecedentesNP_NoPatogia1
-		FOREIGN KEY (NoPatogia_idNoPatogia)
-		REFERENCES NoPatogia (idNoPatogia),
-	CONSTRAINT fk_NoPatogia_has_AntecedentesNP_AntecedentesNP1
+	CONSTRAINT fk_NoPatologia_has_AntecedentesNP_NoPatologia1
+		FOREIGN KEY (NoPatologia_idNoPatologia)
+		REFERENCES NoPatologia (idNoPatologia),
+	CONSTRAINT fk_NoPatologia_has_AntecedentesNP_AntecedentesNP1
 		FOREIGN KEY (AntecedentesNP_idAntecedentesNP)
 		REFERENCES AntecedentesNP (idAntecedentesNP)

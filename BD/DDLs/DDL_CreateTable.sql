@@ -44,7 +44,7 @@ CREATE TABLE Persona (
 	segundoNombre VARCHAR(45) NULL,
 	primerApellido VARCHAR(45) NULL,
 	segundoApellido VARCHAR(45) NULL,
-	numeroIdentidad VARCHAR(45) NOT NULL,
+	numeroIdentidad VARCHAR(45) NULL,
 	numeroTelefono VARCHAR(45) NULL,
 	edad INT NULL,
 	Genero_idGenero INT NOT NULL,
@@ -64,12 +64,12 @@ CREATE TABLE Patologia (
 
 
 -- -----------------------------------------------------
--- Table NoPatogia
+-- Table NoPatologia
 -- -----------------------------------------------------
-CREATE TABLE NoPatogia (
-	idNoPatogia INT NOT NULL,
+CREATE TABLE NoPatologia (
+	idNoPatologia INT NOT NULL,
 	descripcion VARCHAR(45) NULL,
-	PRIMARY KEY (idNoPatogia)
+	PRIMARY KEY (idNoPatologia)
 )
 
 
@@ -275,7 +275,7 @@ CREATE TABLE ListaAntecedentesP (
 -- Table ListaAntecedentesNP
 -- -----------------------------------------------------
 CREATE TABLE ListaAntecedentesNP (
-	NoPatogia_idNoPatogia INT NOT NULL,
+	NoPatologia_idNoPatologia INT NOT NULL,
 	AntecedentesNP_idAntecedentesNP INT NOT NULL,
-	PRIMARY KEY (NoPatogia_idNoPatogia, AntecedentesNP_idAntecedentesNP)
+	PRIMARY KEY (NoPatologia_idNoPatologia, AntecedentesNP_idAntecedentesNP)
 )
