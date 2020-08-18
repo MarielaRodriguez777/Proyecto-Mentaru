@@ -572,7 +572,7 @@ insert into Persona (idPersona, numeroIdentidad, primerNombre, segundoNombre, pr
 insert into Persona (idPersona, numeroIdentidad, primerNombre, segundoNombre, primerApellido, segundoApellido, numeroTelefono, edad, Genero_idGenero, Municipio_idMunicipio) values (49, '0701-1993-97158', 'Roderich', 'Toma', 'Truce', 'Chastey', '623-367-4070', 55, 1, 20);
 insert into Persona (idPersona, numeroIdentidad, primerNombre, segundoNombre, primerApellido, segundoApellido, numeroTelefono, edad, Genero_idGenero, Municipio_idMunicipio) values (50, '0701-1993-39514', 'Sullivan', 'Ernaline', 'Greguoli', 'Richardin', '671-151-6410', 93, 1, 152);
 
--PRUEBA
+--PRUEBA
 
 insert into Prueba (idPrueba, codigoPrueba, fecha, infectado, Persona_idPersona) values (1, '0001', '2020-01-03', 0, 1);
 insert into Prueba (idPrueba, codigoPrueba, fecha, infectado, Persona_idPersona) values (2, '0002', '2020-02-11', 1, 2);
