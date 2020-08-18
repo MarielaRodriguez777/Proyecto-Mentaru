@@ -22,7 +22,6 @@ const FN_Peticion_IdentificarPersona = () => {
             console.log(error.responseText);
         }
     });
-    return false;
 
     /** En caso de identificar al usuario, hacer:
      * Actualizar data_persona
