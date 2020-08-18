@@ -1,16 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Create a stylish landing page for your business startup and get leads for the offered services with this HTML landing page template.">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="" />
+    <!-- website name -->
+    <meta property="og:site" content="" />
+    <!-- website link -->
+    <meta property="og:title" content="" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" />
+    <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" />
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Encuesta</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/encuesta.css" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="images/mentaru - icono.png">
 </head>
-<body>
-	<script src="js/scripts/functions_utility.js"></script>
-	<script src="js/scripts/Data/data_encuesta.js"></script>
-	<script src="js/scripts/Encuesta/render.js"></script>
-	<script src="js/scripts/Encuesta/peticiones.js"></script>
-	<script src="js/scripts/Encuesta/main_encuesta.js"></script>
+
+<body data-spy="scroll" data-target=".fixed-top">
+    <!-- Preloader -->
+    <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="index.html"><img src="images/mentaru.png" alt="alternative"></a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-awesome fas fa-bars"></span>
+				<span class="navbar-toggler-awesome fas fa-times"></span>
+			</button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" style="color: #626262;" href="#header">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" style="color: #626262;" href="#encuesta">Encuesta <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" style="color: #626262;" href="#estadistica">Estadísticas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" style="color: #626262;" href="#about">Nuestro Equipo</a>
+                </li>
+                <!-- end of dropdown menu -->
+
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" style="color: #626262;" href="#contact">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll btn-solid-lg-fixed" type="button">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll btn-solid-lg-fixed" type="button">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- end of navbar -->
+    <!-- end of navigation -->
+
+    <div id="encuesta" class="form-2">
+        <div class="content1">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><b>Encuesta Covid-19</b></h2>
+                    <h5 align="center">La encuesta es para personas que se hayan hecho pruebas de Covid-19 en laboratorios y que hayan salido positivas </h5>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row content2">
+                <div class="col-md-12">
+                    <h5><b>¿Cómo quiere identificarse?</b></h5><br>
+                </div>
+
+                <div class="col-md-4">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="identificarse" required>
+								<option class="select-option" value="" disabled selected>Género</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="laboratorio" required>
+								<option class="select-option" value="" disabled selected>Elija el laboratorio donde se realizó la prueba</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="prueba" required>
+                            <label class="label-control" for="prueba">Ingrese el código de su prueba de laboratorio</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2 form-group" style="float: left;">
+                    <button type="submit" class="form-control-submit-button1">Encontrar Prueba</button>
+                </div>
+                <!-- end of col -->
+            </div>
+
+            <div class="row content2">
+                <div class="col-md-12">
+                    <h5><b>Información del Paciente</b></h5><br>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="nombre" required>
+                            <label class="label-control" for="nombre">Nombre</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="apellidos" required>
+                            <label class="label-control" for="apellidos">Apelllido</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="identidad" required>
+                            <label class="label-control" for="identidad">Número de Identidad</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="telefono" required>
+                            <label class="label-control" for="telefono">Número de Teléfono</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="departamento" required>
+								<option class="select-option" value="" disabled selected>Departamento</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="municipio" required>
+								<option class="select-option" value="" disabled selected>Municipio</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="number" class="form-control-input" id="edad" required>
+                            <label class="label-control" for="edad">Edad</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <h4 align="center"><b>Género</b></h4>
+                        <div style="width: auto;" align="center">
+                            <input type="radio" style="width: auto;" id="priority-low" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="priority-low">Si</label>
+                            <input type="radio" style="width: auto" id="priority-normal" value="2" name="priority" />
+                            <label style="color: black;" for="priority-normal">Femenino</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="row content3">
+                    <div class="col-md-12">
+                        <h5><b>Antecendentes Patológicos</b></h5><br>
+                    </div>
+                    <form style="width: 50%;" id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>¿Padece de Diabetes?
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>¿Padece de Hipertensión?
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>¿Padece de Insuficiencia Renal?
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>¿Padece de Asma?
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class=" content3 row">
+                    <div class="col-md-12">
+                        <h5><b>Antecendentes No Patológicos</b></h5><br>
+                    </div>
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>
+                            <a>¿Ha estado en el extranjero</a><br>
+                            <a>en los últimos 14 días?</a>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>
+                            <a>¿Ha visitado sitios concurridos</a><br>
+                            <a>en los últimos 14 días?</a>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>
+                            <a>¿Mantuvo contacto con una </a><br>
+                            <a>persona diagnosticada de Covid-19?</a>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>¿Lo han visitado últimamente?
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <h4 align="center"><b>¿Se ha contagiado anteriormente de Covid-19?</b></h4>
+                        <div style="width: auto;" align="center">
+                            <input type="radio" style="width: auto;" id="si" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="si">Si</label>
+                            <input type="radio" style="width: auto" id="no" value="2" name="priority" />
+                            <label style="color: black;" for="no">No</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="number" class="form-control-input" id="personas" required>
+                            <label class="label-control" for="personas">¿Cuántas personas viven con usted?</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <h4 align="center"><b>¿Usted se encuentra?</b></h4>
+                        <div style="width: auto;" align="center">
+                            <input type="radio" style="width: auto;" id="contagio" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="contagio">Contagiado</label>
+                            <input type="radio" style="width: auto" id="contagio" value="2" name="priority" />
+                            <label style="color: black;" for="contagio">Recuperado</label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- end of col -->
+            </div>
+
+            <div class="row content2">
+                <div class="col-md-12">
+                    <h5><b>Acerca del Covid-19</b></h5><br>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="number" class="form-control-input" id="cuarentena" required>
+                            <label class="label-control" for="cuarentena">¿Cuántos días lleva en cuarentena?</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <h4 align="center"><b>¿Presenta algún tipo de síntoma?</b></h4>
+                        <div style="width: auto;" align="center">
+                            <input type="radio" style="width: auto;" id="sintoma" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="sintoma">Si</label>
+                            <input type="radio" style="width: auto" id="sintoma1" value="2" name="priority" />
+                            <label style="color: black;" for="sintoma1">No</label>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-12">
+                    <br>
+                    <h5><b>¿Qué síntomas ha presentado?</b></h5><br>
+                </div>
+                <div class="row " style="justify-content: center;">
+                    <div class="row content3 col-md-2">
+                        <div class="col-md-12">
+                            <h5><b>Síntomas Comunes</b></h5><br>
+                        </div>
+                        <form style="width: 50%;" id="contactForm" data-toggle="validator" data-focus="false">
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>Tos Seca
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>Fiebre
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>Diarrea
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="content3 row col-md-2">
+                        <div class="col-md-12">
+                            <h5><b>Síntomas No Comunes</b></h5><br>
+                        </div>
+                        <form id="contactForm" data-toggle="validator" data-focus="false">
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Cansancio Residente</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Dolor de Garganta</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Secreción Nasal </a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>Naúseas
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="content3 row col-md-2">
+                        <div class="col-md-12">
+                            <h5><b>Síntomas Graves</b></h5><br>
+                        </div>
+                        <form id="contactForm" data-toggle="validator" data-focus="false">
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Díficultad para respirar</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Incapacidad para hablar o moverse</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>
+                                <a>Dolor de Cabeza</a>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" required>Dolor de cuerpo
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12">
+                        <form id="contactForm" data-toggle="validator" data-focus="false">
+                            <h4 align="center"><b>¿Cuántos días lleva presentando síntomas?</b></h4>
+                            <div style="width: auto;" align="center">
+                                <input type="radio" style="width: auto;" id="si" name="priority" value="1" />
+                                <label style="color: black; margin-right: 5rem;" for="si">Si</label>
+                                <input type="radio" style="width: auto" id="no" value="2" name="priority" />
+                                <label style="color: black;" for="no">No</label>
+                            </div>
+                        </form>
+                    </div>
+                </div><br>
+
+                <div class="col-md-12">
+                    <br>
+                    <h4><b>¿Recibe atención médica?</b></h4>
+                    <div style="width: auto;">
+                        <input type="radio" style="width: auto;" id="sintoma" name="priority" value="1" />
+                        <label style="color: black; margin-right: 5rem;" for="sintoma">Si</label>
+                        <input type="radio" style="width: auto" id="sintoma1" value="2" name="priority" />
+                        <label style="color: black;" for="sintoma1">No</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="seguimiento" required>
+								<option class="select-option" value="" disabled selected>¿Qué tratamiento está siguiendo?</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <select class="form-control-select" id="asistencia" required>
+								<option class="select-option" value="" disabled selected>¿Dónde solicitó la asistencia médica?</option>
+								<option class="select-option" value="Delete data">Delete my data</option>
+								<option class="select-option" value="Show me data">Show me my data</option>
+							</select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="date" class="form-control-input" id="inicio" required>
+                            <label class="label-control" for="inicio">¿Cuándo inicio el tratamiento?</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="number" class="form-control-input" id="tratamiento" required>
+                            <label class="label-control" for="tratamiento">¿Cuántos días de tratamiento lleva?</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <!-- end of col -->
+            </div>
+            <!-- end of row -->
+        </div>
+
+        <div class="col-md-2 form-group" style="float: left;">
+            <button type="submit" class="form-control-submit-button1">Cancelar</button>
+        </div>
+        <div class="col-md-2 form-group" style="float: left;">
+            <button type="submit" class="form-control-submit-button1">Enviar Encuesta</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-col">
+                        <h4>Sobre Mentaru</h4>
+                        <p>Mostrar a las personas las estadísticas del día a día sobre el Covid-19.</p>
+                    </div>
+                </div>
+                <!-- end of col -->
+                <div class="col-md-4">
+                    <div class="footer-col middle">
+                        <h4>Important Links</h4>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Our business partners <a class="turquoise" href="#your-link">startupguide.com</a></div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Read our <a class="turquoise" href="terms-conditions.html">Terms & Conditions</a>, <a class="turquoise" href="privacy-policy.html">Privacy Policy</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end of col -->
+                <div class="col-md-4">
+                    <div class="footer-col last">
+                        <h4>Social Media</h4>
+                        <span class="fa-stack">
+								<a href="#your-link">
+									<i class="fas fa-circle fa-stack-2x"></i>
+									<i class="fab fa-facebook-f fa-stack-1x"></i>
+								</a>
+							</span>
+                        <span class="fa-stack">
+								<a href="#your-link">
+									<i class="fas fa-circle fa-stack-2x"></i>
+									<i class="fab fa-twitter fa-stack-1x"></i>
+								</a>
+							</span>
+                        <span class="fa-stack">
+								<a href="#your-link">
+									<i class="fas fa-circle fa-stack-2x"></i>
+									<i class="fab fa-google-plus-g fa-stack-1x"></i>
+								</a>
+							</span>
+                        <span class="fa-stack">
+								<a href="#your-link">
+									<i class="fas fa-circle fa-stack-2x"></i>
+									<i class="fab fa-instagram fa-stack-1x"></i>
+								</a>
+							</span>
+                        <span class="fa-stack">
+								<a href="#your-link">
+									<i class="fas fa-circle fa-stack-2x"></i>
+									<i class="fab fa-linkedin-in fa-stack-1x"></i>
+								</a>
+							</span>
+                    </div>
+                </div>
+                <!-- end of col -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of footer -->
+    <!-- end of footer -->
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2020 <a>Menraru</a> - All rights reserved</p>
+                </div>
+                <!-- end of col -->
+            </div>
+            <!-- enf of row -->
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of copyright -->
+    <!-- end of copyright -->
+
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script>
+    <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script>
+    <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- Magnific Popup for lightboxes -->
+    <script src="js/validator.min.js"></script>
+    <!-- Validator.js - Bootstrap plugin that validates forms -->
+
+    <!-- Mentaru scripts -->
+    <script src="js/dynamic-content.js"></script>
+    <!-- Preloader, navbar collpase and scroll, move form fields label-->
+    <script src="js/scripts.js"></script>
+
+    <script src="js/scripts/functions_utility.js"></script>
+    <script src="js/scripts/Data/data_encuesta.js"></script>
+    <script src="js/scripts/Encuesta/render.js"></script>
+    <script src="js/scripts/Encuesta/peticiones.js"></script>
+    <script src="js/scripts/Encuesta/main_encuesta.js"></script>
 </body>
+
 </html>
