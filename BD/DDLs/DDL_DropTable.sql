@@ -22,7 +22,7 @@ DROP TABLE TipoSintoma;
 DROP TABLE Cronologia;
 DROP TABLE Encuesta;
 DROP TABLE EstadoPaciente;
-DROP TABLE NoPatogia;
+DROP TABLE NoPatologia;
 DROP TABLE Patologia;
 DROP TABLE Persona;
 DROP TABLE Municipio;

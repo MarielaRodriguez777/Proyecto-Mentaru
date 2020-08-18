@@ -1,13 +1,16 @@
--- <=== Pantalla ===>
+-- <=== Encuesta ===>
 /* Requisitos de las acciones:
- * <ACCION 1>: <@parametro1>, <@parametro2> ...
- * Parametros Opcional: <@parametro3>, <@parametro4> ...
- * Salida mediante parametros: <@parametro5>...
- * Salida mediante SELECT: campo1...
+ * Estas acciones no tienen la utltima validacion, por lo tanto no habrá un codigo numero 6.
  *
- * <ACCION 2>: ...
+ * INSERT-CRONOLOGIA: @pidPersona, @pdiasCuarentena
+ * Parametros Opcional: @pdiasSintomas, @pfechaRecuperacion
+ * Nota: Se debe crear un registro de la cronologia
+ * 		 Se debe encontrar la fecha en que se realizo la prueba el paciente
+ *
+ * INSERT-SINTOMAS: @pidPersona, @pidSintoma
+ * Nota: Se debe insertar un sintoma en la tabla ListaSintomas
 */
-CREATE OR ALTER PROCEDURE SP_SIGLAS_NOMBRE ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
+CREATE OR ALTER PROCEDURE SP_EN_SINTOMAS ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
 	-- Parametros de Entrada
 	@paccion					VARCHAR(45),
 

@@ -6,7 +6,7 @@
  *
  * Funcionalidad: Descripcion
 */
-CREATE FUNCTION SIGLAS_NOMBRE_FN (
+CREATE FUNCTION FN_NOMBRE (
 	-- Parametros de Entrada
 	@pparametro1					VARCHAR(45),
 	@pparametro2					VARCHAR(45),
