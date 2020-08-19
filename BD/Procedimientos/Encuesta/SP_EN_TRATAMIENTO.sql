@@ -87,21 +87,21 @@ BEGIN
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
 		SELECT @vconteo = COUNT(*) FROM Encuesta
-		WHERE Persona_idPersona = Persona_idPersona;
+		WHERE Persona_idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , ' para @pidPersona');
 		END;
 
 		SELECT @vconteo = COUNT(*) FROM Tratamiento
 		WHERE idTratamiento = @pidTratamiento	;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidTratamiento , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidTratamiento , ' @pidTratamiento');
 		END;
 
 		SELECT @vconteo = COUNT(*) FROM LugarAsistencia
 		WHERE idLugarAsistencia = @pidLugarAsistencia	;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidLugarAsistencia , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidLugarAsistencia , ' @pidLugarAsistencia');
 		END;
 
 		-- Validar que el identificador no deba existir en la tabla
