@@ -19,31 +19,31 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session(config.configSession));
-app.use('/mentaru/', apisViews);
-app.use('/mentaru/api/EN', apisEN);
-//app.use('/mentaru/api/ES', apisES);
-//app.use('/mentaru/api/US', apisUS);
-//app.use('/mentaru/api/Miscelaneos', apisMiscelaneos);
+app.use('/', apisViews);
+app.use('/api/EN', apisEN);
+//app.use('/api/ES', apisES);
+//app.use('/api/US', apisUS);
+//app.use('/api/Miscelaneos', apisMiscelaneos);
 
 
 // Punto de inicio
-app.get('/mentaru/probarAPI', (req, res) => {
+app.get('/probarAPI', (req, res) => {
     /*if (req.session.name) {
     	functionsMiscelaneos.redirectById(req, res);
     } else {
-    	res.redirect('/Mentaru/view/index');
+    	res.redirect('/view/index');
     }*/
-    res.redirect('/mentaru/api/EN/EN_IDENTIFICAR');
+    res.redirect('/api/EN/EN_IDENTIFICAR');
 });
 
 // Punto de inicio
-app.get('/mentaru/', (req, res) => {
+app.get('/', (req, res) => {
     /*if (req.session.name) {
     	functionsMiscelaneos.redirectById(req, res);
     } else {
-    	res.redirect('/Mentaru/view/index');
+    	res.redirect('/view/index');
     }*/
-    res.redirect('/mentaru/');
+    res.redirect('/');
 });
 
 

@@ -4,20 +4,33 @@ const app = require('./app');
 var fs = require('fs');
 var https = require('https');
 
-//CONFIGURANDO HTTPS
+
+/* //CONFIGURANDO HTTPS
 https.createServer({
     key: fs.readFileSync(__dirname + '/Server/security/server_key.pem'),
     cert: fs.readFileSync(__dirname + '/Server/security/server_crt.pem')
-}, app).listen(config.configServer.port, function() {
-    console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`)
-});
-
-/*
-//start the server
-app.listen(config.configServer.port, () =>
-	console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`)
+}, app).listen(
+    /* config.configServer.port, */
+/* process.env.ALLWAYSDATA_HTTPD_PORT,
+    process.env.ALLWAYSDATA_HTTPD_IP,
+    function() {
+        console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`);
+        console.log(`aplicacion corriendo en http://mentaru.alwaysdata.net/mentaru/`);
+    }
 );
-*/
+ */
+
+//start the server
+app.listen(
+    /* config.configServer.port, */
+    process.env.ALLWAYSDATA_HTTPD_PORT,
+    process.env.ALLWAYSDATA_HTTPD_IP,
+    function() {
+        console.log(`aplicacion corriendo en http://localhost:${config.configServer.port}/mentaru/`);
+        console.log(`aplicacion corriendo en http://mentaru.alwaysdata.net/`);
+    }
+);
+
 
 
 
@@ -25,7 +38,7 @@ app.listen(config.configServer.port, () =>
 // PROBANDO CONEXION CON LA BASE DE DATOS {MENTARU}
 // IMPORTANDO LOS MODULOS NECESARIOS
 const sql = require('mssql');
-const conn = require('./server/db/connectionDB');
+const conn = require('./Server/db/connectionDB');
 const { Console } = require('console');
 
 function prueba(req, res) {
