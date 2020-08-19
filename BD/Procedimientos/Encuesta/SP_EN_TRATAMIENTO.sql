@@ -106,14 +106,8 @@ BEGIN
 
 		-- Validar que el identificador no deba existir en la tabla
 		SELECT @vIdEncuesta = idEncuesta FROM Encuesta
-		WHERE Persona_idPersona = Persona_idPersona;
+		WHERE Persona_idPersona =  @pidPersona;
 
-
-		SELECT @vconteo = COUNT(*) FROM AsistenciaMedica
-		WHERE Encuesta_idEncuesta = @vIdEncuesta;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' Ya existe el identificador => ' , 'asistencia medica para esta encuesta' , ' ');
-		END;
 
 		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
 
