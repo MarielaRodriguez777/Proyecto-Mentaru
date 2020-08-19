@@ -26,3 +26,15 @@ FN_Peticion_Antecedentes();
 FN_Peticion_Sintomas();
 FN_Peticion_AsistenciaMedica();
 FN_Peticion_EnviarEncuesta();
+
+
+$("#cmb-identificacion").onchange(function() {
+    imprimir('Se ha cambiado el valor del combobox ...');
+
+});
+
+
+$("#btn-encontrarPrueba").onchange(function() {
+    imprimir('Se ha pulsado el boton ...');
+    FN_Peticion_IdentificarPersona();
+});
