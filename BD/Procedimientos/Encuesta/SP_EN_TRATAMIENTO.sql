@@ -8,7 +8,7 @@
 CREATE OR ALTER PROCEDURE SP_EN_TRATAMIENTO ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
 	-- Parametros de Entrada
 	@pidPersona					INT,
-	@pidTratamiento			INT,
+	@pidTratamiento				INT,
 	@pidLugarAsistencia			INT,
 	@pfecha						DATE,
 	@paccion					VARCHAR(45),
