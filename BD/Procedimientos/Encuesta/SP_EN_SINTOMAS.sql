@@ -8,7 +8,6 @@
  * 		 Se debe encontrar la fecha en que se realizo la prueba el paciente
  *
  * INSERT-SINTOMAS: @pidPersona, @pidSintoma
- * Parametros Opcional: @pdiasSintomasListaSintomas, @pfechaSintoma
  * Nota: Se debe insertar un sintoma en la tabla ListaSintomas
 */
 CREATE OR ALTER PROCEDURE SP_EN_SINTOMAS ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
@@ -18,8 +17,6 @@ CREATE OR ALTER PROCEDURE SP_EN_SINTOMAS ( --Ejemplo: SP_GU_LOGIN: Procedimiento
 	@pdiasSintomas				INT,
 	@pfechaRecuperacion			DATE,
 	@pidSintoma					INT,
-	@pdiasSintomasListaSintomas INT,
-	@pfechaSintoma				DATE,
 	@paccion					VARCHAR(45),
 
 	-- Parametros de Salida
@@ -68,7 +65,7 @@ BEGIN
 
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM persona 
+		SELECT @vconteo = COUNT(*) FROM persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
 			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , '  @pidPersona');
@@ -91,16 +88,16 @@ BEGIN
 		WHERE Persona_idPersona = @pidPersona;
 
 
-		
+
 		--fecha en la que se hizo la prueba
 		SELECT @vfechaprueba = fecha
 		FROM Prueba
 		WHERE (Persona_idPersona = @pidPersona) AND (infectado = 1);
 
-		--id del nuevo registro en cronologia 
-		SELECT @vconteo = COUNT(*) FROM Cronologia 
+		--id del nuevo registro en cronologia
+		SELECT @vconteo = COUNT(*) FROM Cronologia
 
-		SET @vconteo = @vconteo + 1; 
+		SET @vconteo = @vconteo + 1;
 
 		--INSERT
 		INSERT INTO Cronologia
@@ -149,7 +146,7 @@ BEGIN
 
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM persona 
+		SELECT @vconteo = COUNT(*) FROM persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
 			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , '  @pidPersona');
@@ -181,15 +178,11 @@ BEGIN
 		--INSERT
 		INSERT INTO listaSintomas
            (Encuesta_idEncuesta
-           ,Sintoma_idSintoma
-           ,diasSintoma
-           ,fechaSintoma)
+           ,Sintoma_idSintoma)
      VALUES
            (@videncuesta,
-		   @pidSintoma,
-		   @pdiasSintomasListaSintomas,
-		   @pfechaSintoma);
-		   
+		   @pidSintoma);
+
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
 	END;
 
