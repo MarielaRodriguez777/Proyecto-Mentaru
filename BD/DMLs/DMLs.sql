@@ -309,25 +309,6 @@ insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) va
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (109, 'Trojes', 7);
 
 
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (91, 'Distrito Central', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (92, 'Alubarén', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (93, 'Cedros', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (94, 'Curarén', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (95, 'El Porvenir', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (96, 'Guaimaca', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (97, 'La Libertad', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (98, 'La Venta', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (99, 'Lepaterique', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (100, 'Maraita', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (101, 'Marale', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (102, 'Nueva Armenia', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (103, 'Ojojona', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (104, 'Orica', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (105, 'Reitoca', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (106, 'Sabanagrande', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (107, 'San Antonio de Oriente', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (108, 'San Buenaventura', 8);
-insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (109, 'San Ignacio', 8);
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (110, 'San Juan de Flores', 8);
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (111, 'San Miguelito', 8);
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (112, 'Santa Ana', 8);
@@ -518,6 +499,26 @@ insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) va
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (277, 'Sulaco', 18);
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (278, 'Victoria', 18);
 insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (279, 'Yorito', 18);
+
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (280, 'Distrito Central', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (281, 'Alubarén', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (282, 'Cedros', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (283, 'Curarén', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (284, 'El Porvenir', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (285, 'Guaimaca', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (286, 'La Libertad', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (287, 'La Venta', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (288, 'Lepaterique', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (289, 'Maraita', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (291, 'Marale', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (292, 'Nueva Armenia', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (293, 'Ojojona', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (294, 'Orica', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (295, 'Reitoca', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (296, 'Sabanagrande', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (297, 'San Antonio de Oriente', 8);
+insert into municipio (idMunicipio, descripcion, Departamento_idDepartamento) values (298, 'San Buenaventura', 8);
+
 
 --PERSONA
 

@@ -8,7 +8,7 @@
 CREATE OR ALTER PROCEDURE SP_EN_TRATAMIENTO ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
 	-- Parametros de Entrada
 	@pidPersona					INT,
-	@pidTratamiento			INT,
+	@pidTratamiento				INT,
 	@pidLugarAsistencia			INT,
 	@pfecha						DATE,
 	@paccion					VARCHAR(45),
@@ -87,33 +87,27 @@ BEGIN
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
 		SELECT @vconteo = COUNT(*) FROM Encuesta
-		WHERE Persona_idPersona = Persona_idPersona;
+		WHERE Persona_idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidPersona , ' para @pidPersona');
 		END;
 
 		SELECT @vconteo = COUNT(*) FROM Tratamiento
 		WHERE idTratamiento = @pidTratamiento	;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidTratamiento , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidTratamiento , ' @pidTratamiento');
 		END;
 
 		SELECT @vconteo = COUNT(*) FROM LugarAsistencia
 		WHERE idLugarAsistencia = @pidLugarAsistencia	;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidLugarAsistencia , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pidLugarAsistencia , ' @pidLugarAsistencia');
 		END;
 
 		-- Validar que el identificador no deba existir en la tabla
 		SELECT @vIdEncuesta = idEncuesta FROM Encuesta
-		WHERE Persona_idPersona = Persona_idPersona;
+		WHERE Persona_idPersona =  @pidPersona;
 
-
-		SELECT @vconteo = COUNT(*) FROM AsistenciaMedica
-		WHERE Encuesta_idEncuesta = @vIdEncuesta;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' Ya existe el identificador => ' , 'asistencia medica para esta encuesta' , ' ');
-		END;
 
 		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
 

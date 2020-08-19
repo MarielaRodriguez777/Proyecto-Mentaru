@@ -1,17 +1,14 @@
 -- <=== Encuesta ===>
 /* Requisitos de las acciones:
  * IDENTIDAD: @pnumeroIdentidad
- * Salida mediante parametros: @idPersona, @pNombre, @sNombre, @pApellido, @Sapellido, @numeroIdentidad, @numeroTelefono, @edad, @genero
  * Salida mediante SELECT: idPersona, nombres, apellidos, numeroIdentidad,
  * numeroTelefono, edad, genero
  *
  * TELEFONO:  @pnumeroTelefono
- * Salida mediante parametros: @idPersona, @pNombre, @sNombre, @pApellido, @Sapellido, @numeroIdentidad, @numeroTelefono, @edad, @genero
  * Salida mediante SELECT: idPersona, nombres, apellidos, numeroIdentidad,
  * numeroTelefono, edad, genero
  *
  * PRUEBA:  @pcodigoLaboratorio, @pcodigoPrueba
- * Salida mediante parametros: @idPersona, @pNombre, @sNombre, @pApellido, @Sapellido, @numeroIdentidad, @numeroTelefono, @edad, @genero
  * Salida mediante SELECT: idPersona, nombres, apellidos, numeroIdentidad,
  * numeroTelefono, edad, genero
 */
@@ -26,23 +23,16 @@ CREATE OR ALTER PROCEDURE SP_EN_IDENTIFICACION ( --Ejemplo: SP_GU_LOGIN: Procedi
 	-- Parametros de Salida
 	-- Codigo de mensaje
 	@pcodigoMensaje				INT OUTPUT,
-	@pmensaje 					VARCHAR(1000) OUTPUT,
+	@pmensaje 					VARCHAR(1000) OUTPUT
 	
 	-- Otros parametros de salida
-	@idPersona					INT OUTPUT,
-	@pNombre					VARCHAR(45) OUTPUT,
-	@sNombre					VARCHAR(45) OUTPUT,
-	@pApellido					VARCHAR(45) OUTPUT,
-	@Sapellido					VARCHAR(45) OUTPUT,
-	@numeroIdentidad			VARCHAR(45) OUTPUT,
-	@numeroTelefono				VARCHAR(45) OUTPUT,
-	@edad						INT OUTPUT,
-	@genero						VARCHAR(45) OUTPUT
+	
 
 ) AS
 BEGIN
 	-- Declaracion de Variables
 	DECLARE	@vconteo INT;
+	DECLARE @vidpersona INT;
 
 		-- Setear Valores
 		SET @pcodigoMensaje=0;
@@ -52,7 +42,7 @@ BEGIN
 	 * Descripcion Funcionalidad: localiza la informacion de la persona, realizando una busqueda a traves de su numero de identidad como filtro
 	*/
 	IF @paccion = 'IDENTIDAD' BEGIN
-
+		
 
 		-- Validacion de campos nulos
 		IF @pnumeroIdentidad = '' OR @pnumeroIdentidad IS NULL BEGIN
@@ -84,7 +74,45 @@ BEGIN
 		END;
 
 
-		SELECT @idPersona = p.idPersona, @pNombre = p.primerNombre, @sNombre = p.segundoNombre, @pApellido = p.primerApellido, @Sapellido = p.segundoApellido, @numeroIdentidad = p.numeroIdentidad, @numeroTelefono = p.numeroTelefono, @edad = p.edad, @genero = g.descripcion
+		-- Validacion de procedimientos
+		/* Validaciones ha realizar
+		 * 1. La persona debe de haber dado positivo.
+		 *    *Es posible que la persona se haya hecho varias pruebas en varios laboratorios.
+		 *    *Del conjunto de pruebas que se haya hecho la persona, al menos una debe de dar positivo, si no incumpliria con la validación y no podrá llenar la encuesta.
+		 * 2. La persona no puede llenar más de una vez la encuesta.
+		*/
+
+
+
+		SELECT @vidpersona = idPersona
+		FROM persona
+		WHERE numeroIdentidad = @pnumeroIdentidad;
+
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
+			SET @pcodigoMensaje = 6;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
+			RETURN;
+		END;
+
+
+
+		--Accion del procedimiento
+		SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.numeroIdentidad, p.numeroTelefono, p.edad, g.descripcion
 		FROM  persona p
 		INNER JOIN genero g on g.idGenero=p.Genero_idGenero
 		WHERE numeroIdentidad = @pnumeroIdentidad;
@@ -140,11 +168,34 @@ BEGIN
 		 * 2. La persona no puede llenar más de una vez la encuesta.
 		*/
 
+		SELECT @vidpersona = idPersona
+		FROM persona
+		WHERE numeroTelefono = @pnumeroTelefono;
 
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
+			SET @pcodigoMensaje = 6;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
+			RETURN;
+		END;
 
 
 		-- Accion del procedimiento
-		SELECT @idPersona = p.idPersona, @pNombre = p.primerNombre, @sNombre = p.segundoNombre, @pApellido = p.primerApellido, @Sapellido = p.segundoApellido, @numeroIdentidad = p.numeroIdentidad, @numeroTelefono = p.numeroTelefono, @edad = p.edad, @genero = g.descripcion
+		SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.numeroIdentidad, p.numeroTelefono, p.edad,  g.descripcion
 		FROM  persona p
 		INNER JOIN genero g on g.idGenero=p.Genero_idGenero
 		WHERE numeroTelefono = @pnumeroTelefono;
@@ -159,9 +210,15 @@ BEGIN
 	IF @paccion = 'PRUEBA' BEGIN
 
 		-- Validacion de campos nulos @pcodigoLaboratorio	
-		IF (@pcodigoPrueba = '' OR @pcodigoPrueba IS NULL) OR (@pcodigoLaboratorio = '' OR @pcodigoLaboratorio IS NULL) BEGIN
-			SET @pmensaje = CONCAT(@pmensaje , ' @pcodigoPrueba, @pcodigoLaboratorio ');
+		IF (@pcodigoPrueba = '' OR @pcodigoPrueba IS NULL) BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , ' @pcodigoPrueba');
 		END;
+
+		IF (@pcodigoLaboratorio = '' OR @pcodigoLaboratorio IS NULL)  BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , '  @pcodigoLaboratorio');
+		END;
+
+		 
 
 		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 4;
@@ -177,7 +234,7 @@ BEGIN
 		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
 		WHERE (codigoLaboratio = @pcodigoLaboratorio) AND (codigoPrueba = @pcodigoPrueba);
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pcodigoLaboratorio , ', ' , @pcodigoPrueba , ' ');
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pcodigoLaboratorio , '  o´ ' , @pcodigoPrueba , ' ');
 		END;
 
 
@@ -191,17 +248,46 @@ BEGIN
 
 
 
-		-- Validacion de procedimientos
+				-- Validacion de procedimientos
 		/* Validaciones ha realizar
-		 * 1. La prueba debe de haber dado positivo.
+		 * 1. La persona debe de haber dado positivo.
+		 *    *Es posible que la persona se haya hecho varias pruebas en varios laboratorios.
+		 *    *Del conjunto de pruebas que se haya hecho la persona, al menos una debe de dar positivo, si no incumpliria con la validación y no podrá llenar la encuesta.
 		 * 2. La persona no puede llenar más de una vez la encuesta.
 		*/
+
+		SELECT @vidpersona=psn.idPersona FROM ListaPruebas lp
+		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
+		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
+		INNER JOIN Persona psn ON p.Persona_idPersona = psn.idPersona
+		WHERE (codigoLaboratio = @pcodigoLaboratorio) AND (codigoPrueba = @pcodigoPrueba)
+
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
+			SET @pcodigoMensaje = 6;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
+			RETURN;
+		END;
 
 
 
 
 		-- Accion del procedimiento
-		SELECT @idPersona = psn.idPersona, @pNombre = psn.primerNombre, @sNombre = psn.segundoNombre, @pApellido = psn.primerApellido, @Sapellido = psn.segundoApellido, @numeroIdentidad = psn.numeroIdentidad, @numeroTelefono = psn.numeroTelefono, @edad = psn.edad, @genero = g.descripcion
+		SELECT psn.idPersona, psn.primerNombre, psn.segundoNombre, psn.primerApellido,  psn.segundoApellido,  psn.numeroIdentidad,  psn.numeroTelefono,  psn.edad,  g.descripcion
 		FROM ListaPruebas lp
 		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
 		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba

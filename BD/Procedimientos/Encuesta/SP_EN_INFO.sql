@@ -2,7 +2,7 @@
 /* Requisitos de las acciones:
  * Estas acciones no tienen la utltima validacion, por lo tanto no habrá un codigo numero 6.
  *
- * INSERT-INFO: @pidPersona, @pidMunicipio, idEstadoPaciente
+ * INSERT-INFO: @pidPersona, @pidMunicipio, idEstadoPaciente (0,1)
  * Parametros Opcional: @pnumeroIdentidad, @pnumeroTelefono
  * Nota: Se debe crear un registro de la encuesta, con su respectivo codigo y fecha
  * 		 Se debe crear un registro de los antecedentes patologicos
@@ -14,7 +14,7 @@
  * INSERT-NOPATOLOGIA: @pidPersona, @pidNoPatologia
  * Nota: Se debe insertar una patologia en la lista de no patologias
  *
- * INSERT-ANTECEDENTESP: @pidPersona, @pinfectadoAnteriormente
+ * INSERT-ANTECEDENTESP: @pidPersona, @pinfectadoAnteriormente (0,1)
  * Nota: Se debe actualizar el camo infectadoAnteriormente de la table AntecedentesP
  *
  * INSERT-ANTECEDENTESNP: @pidPersona, @pcPersonaVivienda
