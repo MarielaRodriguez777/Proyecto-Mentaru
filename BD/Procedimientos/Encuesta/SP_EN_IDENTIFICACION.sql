@@ -24,62 +24,54 @@ CREATE OR ALTER PROCEDURE SP_EN_IDENTIFICACION ( --Ejemplo: SP_GU_LOGIN: Procedi
 	-- Codigo de mensaje
 	@pcodigoMensaje				INT OUTPUT,
 	@pmensaje 					VARCHAR(1000) OUTPUT
-
+	
 	-- Otros parametros de salida
+	
 
 ) AS
 BEGIN
 	-- Declaracion de Variables
 	DECLARE	@vconteo INT;
+	DECLARE @vidpersona INT;
 
-
-
-	/* Funcionalidad: Identificar_identidad
-	 * Descripcion Funcionalidad:
-	*/
-	IF @paccion = 'IDENTIDAD' BEGIN
 		-- Setear Valores
 		SET @pcodigoMensaje=0;
-		SET @pmensaje='';
+		SET @pmensaje = NULL;
 
-
+	/* Funcionalidad: Identificar_identidad
+	 * Descripcion Funcionalidad: localiza la informacion de la persona, realizando una busqueda a traves de su numero de identidad como filtro
+	*/
+	IF @paccion = 'IDENTIDAD' BEGIN
+		
 
 		-- Validacion de campos nulos
-		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN
-			SET @pmensaje = @pmensaje + ' campo1 ';
+		IF @pnumeroIdentidad = '' OR @pnumeroIdentidad IS NULL BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , ' @pnumeroIdentidad ');
 		END;
 
-		IF @pmensaje <> '' BEGIN
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 4;
-			SET @pmensaje = 'Error: Campos vacios: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Campos vacios: ' , @pmensaje);
 			RETURN;
 		END;
-
-
 
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
+		SELECT @vconteo = COUNT(*) FROM persona
+		WHERE numeroIdentidad = @pnumeroIdentidad;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @parametro1 + ' ';
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pnumeroIdentidad , ' ');
 		END;
 
-		-- Validar que el identificador no deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' Ya existe el identificador => ' + @parametro1 + ' ';
-		END;
+		
 
 		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
 
-		IF @pmensaje <> '' BEGIN
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 5;
-			SET @pmensaje = 'Error: Identificadores no validos: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Identificadores no validos: ' , @pmensaje);
 			RETURN;
 		END;
-
 
 
 		-- Validacion de procedimientos
@@ -92,48 +84,57 @@ BEGIN
 
 
 
-		IF @pmensaje <> '' BEGIN
+		SELECT @vidpersona = idPersona
+		FROM persona
+		WHERE numeroIdentidad = @pnumeroIdentidad;
+
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 6;
-			SET @pmensaje = 'Error: Validacion en la condicion del procdimiento: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
 			RETURN;
 		END;
 
 
 
-		-- Accion del procedimiento
-
+		--Accion del procedimiento
+		SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.numeroIdentidad, p.numeroTelefono, p.edad, g.descripcion
+		FROM  persona p
+		INNER JOIN genero g on g.idGenero=p.Genero_idGenero
+		WHERE numeroIdentidad = @pnumeroIdentidad;
 
 
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
 	END;
-
-
-
-
-
-
-
-
 
 
 	/* Funcionalidad: Identificar_telefono
-	 * Descripcion Funcionalidad:
+	 * Descripcion Funcionalidad: localiza la informacion de la persona, realizando una busqueda a traves de su numero de telefono como filtro
 	*/
 	IF @paccion = 'TELEFONO' BEGIN
-		-- Setear Valores
-		SET @pcodigoMensaje=0;
-		SET @pmensaje='';
-
-
-
+	
 		-- Validacion de campos nulos
-		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN
-			SET @pmensaje = @pmensaje + ' campo1 ';
+		IF @pnumeroTelefono = '' OR @pnumeroTelefono IS NULL BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , ' @pnumeroTelefono ');
 		END;
 
-		IF @pmensaje <> '' BEGIN
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 4;
-			SET @pmensaje = 'Error: Campos vacios: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Campos vacios: ' , @pmensaje);
 			RETURN;
 		END;
 
@@ -141,24 +142,19 @@ BEGIN
 
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
+		SELECT @vconteo = COUNT(*) FROM persona
+		WHERE numeroTelefono = @pnumeroTelefono;
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @parametro1 + ' ';
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pnumeroTelefono , ' ');
 		END;
 
-		-- Validar que el identificador no deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' Ya existe el identificador => ' + @parametro1 + ' ';
-		END;
+	
 
 		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
 
-		IF @pmensaje <> '' BEGIN
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 5;
-			SET @pmensaje = 'Error: Identificadores no validos: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Identificadores no validos: ' , @pmensaje);
 			RETURN;
 		END;
 
@@ -172,106 +168,140 @@ BEGIN
 		 * 2. La persona no puede llenar más de una vez la encuesta.
 		*/
 
+		SELECT @vidpersona = idPersona
+		FROM persona
+		WHERE numeroTelefono = @pnumeroTelefono;
 
 
-		IF @pmensaje <> '' BEGIN
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 6;
-			SET @pmensaje = 'Error: Validacion en la condicion del procdimiento: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
 			RETURN;
 		END;
 
 
-
 		-- Accion del procedimiento
-
+		SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.numeroIdentidad, p.numeroTelefono, p.edad,  g.descripcion
+		FROM  persona p
+		INNER JOIN genero g on g.idGenero=p.Genero_idGenero
+		WHERE numeroTelefono = @pnumeroTelefono;
 
 
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
 	END;
-
-
-
-
-
-
-
-
-
 
 	/* Funcionalidad: Identificar_prueba
 	 * Descripcion Funcionalidad:
 	*/
 	IF @paccion = 'PRUEBA' BEGIN
-		-- Setear Valores
-		SET @pcodigoMensaje=0;
-		SET @pmensaje='';
 
-
-
-		-- Validacion de campos nulos
-		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN
-			SET @pmensaje = @pmensaje + ' campo1 ';
+		-- Validacion de campos nulos @pcodigoLaboratorio	
+		IF (@pcodigoPrueba = '' OR @pcodigoPrueba IS NULL) BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , ' @pcodigoPrueba');
 		END;
 
-		IF @pmensaje <> '' BEGIN
+		IF (@pcodigoLaboratorio = '' OR @pcodigoLaboratorio IS NULL)  BEGIN
+			SET @pmensaje = CONCAT(@pmensaje , '  @pcodigoLaboratorio');
+		END;
+
+		 
+
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 4;
-			SET @pmensaje = 'Error: Campos vacios: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Campos vacios: ' , @pmensaje);
 			RETURN;
 		END;
 
-
-
+	
 		-- Validacion de identificadores
 		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
+		SELECT @vconteo = COUNT(*) FROM ListaPruebas lp
+		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
+		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
+		WHERE (codigoLaboratio = @pcodigoLaboratorio) AND (codigoPrueba = @pcodigoPrueba);
 		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @parametro1 + ' ';
+			SET @pmensaje = CONCAT(@pmensaje , ' No existe el identificador => ' , @pcodigoLaboratorio , '  o´ ' , @pcodigoPrueba , ' ');
 		END;
 
-		-- Validar que el identificador no deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' Ya existe el identificador => ' + @parametro1 + ' ';
-		END;
 
 		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
 
-		IF @pmensaje <> '' BEGIN
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 5;
-			SET @pmensaje = 'Error: Identificadores no validos: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Identificadores no validos: ' , @pmensaje);
 			RETURN;
 		END;
 
 
 
-		-- Validacion de procedimientos
+				-- Validacion de procedimientos
 		/* Validaciones ha realizar
-		 * 1. La prueba debe de haber dado positivo.
+		 * 1. La persona debe de haber dado positivo.
+		 *    *Es posible que la persona se haya hecho varias pruebas en varios laboratorios.
+		 *    *Del conjunto de pruebas que se haya hecho la persona, al menos una debe de dar positivo, si no incumpliria con la validación y no podrá llenar la encuesta.
 		 * 2. La persona no puede llenar más de una vez la encuesta.
 		*/
 
+		SELECT @vidpersona=psn.idPersona FROM ListaPruebas lp
+		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
+		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
+		INNER JOIN Persona psn ON p.Persona_idPersona = psn.idPersona
+		WHERE (codigoLaboratio = @pcodigoLaboratorio) AND (codigoPrueba = @pcodigoPrueba)
 
 
-		IF @pmensaje <> '' BEGIN
+		SELECT  @vconteo=COUNT(*)
+		FROM Prueba
+		WHERE (Persona_idPersona = @vidpersona) AND infectado=1;
+		IF @vconteo = 0 BEGIN
+			SET @pmensaje = 'No se han encontrado pruebas en  las cuales el usuario haya dado positivo';
+		END;
+
+		SELECT  @vconteo=COUNT(*)
+		FROM Encuesta
+		WHERE (Persona_idPersona = @vidpersona);
+		IF @vconteo <> 0 BEGIN
+			SET @pmensaje = CONCAT(@pmensaje,'  ','Esa persona ya ha llenado la encuesta anteriormente');
+		END;
+
+		IF @pmensaje IS NOT NULL BEGIN
 			SET @pcodigoMensaje = 6;
-			SET @pmensaje = 'Error: Validacion en la condicion del procdimiento: ' + @pmensaje;
+			SET @pmensaje = CONCAT('Error: Validacion en la condicion del procedimiento: ',@pmensaje);
 			RETURN;
 		END;
+
 
 
 
 		-- Accion del procedimiento
-
-
+		SELECT psn.idPersona, psn.primerNombre, psn.segundoNombre, psn.primerApellido,  psn.segundoApellido,  psn.numeroIdentidad,  psn.numeroTelefono,  psn.edad,  g.descripcion
+		FROM ListaPruebas lp
+		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
+		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
+		INNER JOIN Persona psn ON psn.idPersona = p.Persona_idPersona
+		INNER JOIN genero g on g.idGenero=psn.Genero_idGenero;
 
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
 	END;
 
 	-- En caso de no elegir una accion
-	IF @pmensaje = '' BEGIN
+	IF @pmensaje IS NULL BEGIN
 		SET @pcodigoMensaje = 3;
-		SET @pmensaje = 'Error: No se definio la accion a realizar ' + @pmensaje;
+		SET @pmensaje = CONCAT('Error: No se definio la accion a realizar ' , @pmensaje);
 	END;
+
+
 END

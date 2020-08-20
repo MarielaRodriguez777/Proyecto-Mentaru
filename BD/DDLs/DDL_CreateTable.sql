@@ -54,6 +54,69 @@ CREATE TABLE Persona (
 
 
 -- -----------------------------------------------------
+-- Table Laboratorio
+-- -----------------------------------------------------
+CREATE TABLE Laboratorio (
+	idLaboratorio INT NOT NULL,
+	codigoLaboratio VARCHAR(45) NOT NULL,
+	nombreLaboratorio VARCHAR(45) NULL,
+	direccion VARCHAR(200) NULL,
+	Municipio_idMunicipio INT NOT NULL,
+	PRIMARY KEY (idLaboratorio)
+)
+
+
+-- -----------------------------------------------------
+-- Table Prueba
+-- -----------------------------------------------------
+CREATE TABLE Prueba (
+	idPrueba INT NOT NULL,
+	codigoPrueba VARCHAR(45) NOT NULL,
+	fecha DATE NULL,
+	infectado INT NULL,
+	Persona_idPersona INT NOT NULL,
+	PRIMARY KEY (idPrueba)
+)
+
+
+-- -----------------------------------------------------
+-- Table ListaPruebas
+-- -----------------------------------------------------
+CREATE TABLE ListaPruebas (
+	Prueba_idPrueba INT NOT NULL,
+	Laboratorio_idLaboratorio INT NOT NULL,
+	PRIMARY KEY (Prueba_idPrueba, Laboratorio_idLaboratorio)
+)
+
+
+-- -----------------------------------------------------
+-- Table CronologiaContagios
+-- -----------------------------------------------------
+CREATE TABLE CronologiaContagios (
+	idCronologiaContagios INT NOT NULL,
+	fecha DATE NULL,
+	cantidadContagios INT NULL,
+	cantidadMuertes INT NULL,
+	cantidadRecuperados INT NULL,
+	cantidadActivos INT NULL,
+	Municipio_idMunicipio INT NOT NULL,
+	PRIMARY KEY (idCronologiaContagios)
+)
+
+
+-- -----------------------------------------------------
+-- Table Usuarios
+-- -----------------------------------------------------
+CREATE TABLE Usuarios (
+	idUsuarios INT NOT NULL,
+	correoElectronico VARCHAR(45) NOT NULL,
+	contraseña VARCHAR(45) NOT NULL,
+	Persona_idPersona INT NOT NULL,
+	PRIMARY KEY (idUsuarios)
+)
+
+
+-- -----------------------------------------------------
 -- Table Patologia
 -- -----------------------------------------------------
 CREATE TABLE Patologia (
@@ -137,22 +200,7 @@ CREATE TABLE Sintoma (
 CREATE TABLE listaSintomas (
 	Encuesta_idEncuesta INT NOT NULL,
 	Sintoma_idSintoma INT NOT NULL,
-	diasSintoma INT NULL,
-	fechaSintoma DATE NULL,
 	PRIMARY KEY (Encuesta_idEncuesta, Sintoma_idSintoma)
-)
-
-
--- -----------------------------------------------------
--- Table Laboratorio
--- -----------------------------------------------------
-CREATE TABLE Laboratorio (
-	idLaboratorio INT NOT NULL,
-	codigoLaboratio VARCHAR(45) NOT NULL,
-	nombreLaboratorio VARCHAR(45) NULL,
-	direccion VARCHAR(200) NULL,
-	Municipio_idMunicipio INT NOT NULL,
-	PRIMARY KEY (idLaboratorio)
 )
 
 
@@ -190,29 +238,6 @@ CREATE TABLE AsistenciaMedica (
 
 
 -- -----------------------------------------------------
--- Table Prueba
--- -----------------------------------------------------
-CREATE TABLE Prueba (
-	idPrueba INT NOT NULL,
-	codigoPrueba VARCHAR(45) NOT NULL,
-	fecha DATE NULL,
-	infectado INT NULL,
-	Persona_idPersona INT NOT NULL,
-	PRIMARY KEY (idPrueba)
-)
-
-
--- -----------------------------------------------------
--- Table ListaPruebas
--- -----------------------------------------------------
-CREATE TABLE ListaPruebas (
-	Prueba_idPrueba INT NOT NULL,
-	Laboratorio_idLaboratorio INT NOT NULL,
-	PRIMARY KEY (Prueba_idPrueba, Laboratorio_idLaboratorio)
-)
-
-
--- -----------------------------------------------------
 -- Table AntecedentesNP
 -- -----------------------------------------------------
 CREATE TABLE AntecedentesNP (
@@ -220,33 +245,6 @@ CREATE TABLE AntecedentesNP (
 	cPersonaVivienda INT NULL,
 	Encuesta_idEncuesta INT NOT NULL,
 	PRIMARY KEY (idAntecedentesNP)
-)
-
-
--- -----------------------------------------------------
--- Table CronologiaContagios
--- -----------------------------------------------------
-CREATE TABLE CronologiaContagios (
-	idCronologiaContagios INT NOT NULL,
-	fecha DATE NULL,
-	cantidadContagios INT NULL,
-	cantidadMuertes INT NULL,
-	cantidadRecuperados INT NULL,
-	cantidadActivos INT NULL,
-	Municipio_idMunicipio INT NOT NULL,
-	PRIMARY KEY (idCronologiaContagios)
-)
-
-
--- -----------------------------------------------------
--- Table Usuarios
--- -----------------------------------------------------
-CREATE TABLE Usuarios (
-	idUsuarios INT NOT NULL,
-	correoElectronico VARCHAR(45) NOT NULL,
-	contraseña VARCHAR(45) NOT NULL,
-	Persona_idPersona INT NOT NULL,
-	PRIMARY KEY (idUsuarios)
 )
 
 

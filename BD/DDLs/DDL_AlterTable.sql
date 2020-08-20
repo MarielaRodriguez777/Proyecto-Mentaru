@@ -30,6 +30,56 @@ ALTER TABLE Persona ADD
 
 
 -- -----------------------------------------------------
+-- Table Laboratorio
+-- -----------------------------------------------------
+ALTER TABLE Laboratorio ADD
+	CONSTRAINT fk_Laboratorio_Municipio1
+		FOREIGN KEY (Municipio_idMunicipio)
+		REFERENCES Municipio (idMunicipio)
+
+
+-- -----------------------------------------------------
+-- Table Prueba
+-- -----------------------------------------------------
+ALTER TABLE Prueba ADD
+	CONSTRAINT fk_Prueba_Persona1
+		FOREIGN KEY (Persona_idPersona)
+		REFERENCES Persona (idPersona)
+
+
+-- -----------------------------------------------------
+-- Table ListaPruebas
+-- -----------------------------------------------------
+ALTER TABLE ListaPruebas ADD
+	CONSTRAINT fk_Prueba_has_Laboratorio_Prueba1
+		FOREIGN KEY (Prueba_idPrueba)
+		REFERENCES Prueba (idPrueba),
+	CONSTRAINT fk_Prueba_has_Laboratorio_Laboratorio1
+		FOREIGN KEY (Laboratorio_idLaboratorio)
+		REFERENCES Laboratorio (idLaboratorio)
+
+
+-- -----------------------------------------------------
+-- Table CronologiaContagios
+-- -----------------------------------------------------
+ALTER TABLE CronologiaContagios ADD
+	CONSTRAINT fk_CronologiaContagios_Municipio1
+		FOREIGN KEY (Municipio_idMunicipio)
+		REFERENCES Municipio (idMunicipio)
+
+
+-- -----------------------------------------------------
+-- Table Usuarios
+-- -----------------------------------------------------
+ALTER TABLE Usuarios ADD
+	CONSTRAINT correoElectronico_UNIQUE
+		UNIQUE (correoElectronico),
+	CONSTRAINT fk_Usuarios_Persona1
+		FOREIGN KEY (Persona_idPersona)
+		REFERENCES Persona (idPersona)
+
+
+-- -----------------------------------------------------
 -- Table Encuesta
 -- -----------------------------------------------------
 ALTER TABLE Encuesta ADD
@@ -74,15 +124,6 @@ ALTER TABLE listaSintomas ADD
 
 
 -- -----------------------------------------------------
--- Table Laboratorio
--- -----------------------------------------------------
-ALTER TABLE Laboratorio ADD
-	CONSTRAINT fk_Laboratorio_Municipio1
-		FOREIGN KEY (Municipio_idMunicipio)
-		REFERENCES Municipio (idMunicipio)
-
-
--- -----------------------------------------------------
 -- Table AsistenciaMedica
 -- -----------------------------------------------------
 ALTER TABLE AsistenciaMedica ADD
@@ -98,53 +139,12 @@ ALTER TABLE AsistenciaMedica ADD
 
 
 -- -----------------------------------------------------
--- Table Prueba
--- -----------------------------------------------------
-ALTER TABLE Prueba ADD
-	CONSTRAINT fk_Prueba_Persona1
-		FOREIGN KEY (Persona_idPersona)
-		REFERENCES Persona (idPersona)
-
-
--- -----------------------------------------------------
--- Table ListaPruebas
--- -----------------------------------------------------
-ALTER TABLE ListaPruebas ADD
-	CONSTRAINT fk_Prueba_has_Laboratorio_Prueba1
-		FOREIGN KEY (Prueba_idPrueba)
-		REFERENCES Prueba (idPrueba),
-	CONSTRAINT fk_Prueba_has_Laboratorio_Laboratorio1
-		FOREIGN KEY (Laboratorio_idLaboratorio)
-		REFERENCES Laboratorio (idLaboratorio)
-
-
--- -----------------------------------------------------
 -- Table AntecedentesNP
 -- -----------------------------------------------------
 ALTER TABLE AntecedentesNP ADD
 	CONSTRAINT fk_InfoAntecedentes_Encuesta1
 		FOREIGN KEY (Encuesta_idEncuesta)
 		REFERENCES Encuesta (idEncuesta)
-
-
--- -----------------------------------------------------
--- Table CronologiaContagios
--- -----------------------------------------------------
-ALTER TABLE CronologiaContagios ADD
-	CONSTRAINT fk_CronologiaContagios_Municipio1
-		FOREIGN KEY (Municipio_idMunicipio)
-		REFERENCES Municipio (idMunicipio)
-
-
--- -----------------------------------------------------
--- Table Usuarios
--- -----------------------------------------------------
-ALTER TABLE Usuarios ADD
-	CONSTRAINT correoElectronico_UNIQUE
-		UNIQUE (correoElectronico),
-	CONSTRAINT fk_Usuarios_Persona1
-		FOREIGN KEY (Persona_idPersona)
-		REFERENCES Persona (idPersona)
 
 
 -- -----------------------------------------------------
