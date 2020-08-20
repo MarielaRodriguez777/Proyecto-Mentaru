@@ -27,6 +27,10 @@ apisViews.get('/estadisticas', (req, res) => {
     res.sendFile(path + '/estadisticas.html');
 });
 
+apisViews.get('/encuesta', (req, res) => {
+    res.sendFile(path + '/encuesta.html');
+});
+
 apisViews.get('/estadisticasPrueba', (req, res) => {
     res.sendFile(path + '/estadisticasprueba.html');
 });
