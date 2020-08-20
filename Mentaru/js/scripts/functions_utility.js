@@ -1,0 +1,1 @@
+const imprimir = console.log;
