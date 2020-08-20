@@ -1,10 +1,10 @@
 'use strict'
 const config = require('./Server/settings/config');
 const app = require('./app');
-var fs = require('fs');
-var https = require('https');
+//var fs = require('fs');
+//var https = require('https');
 
-
+/*
 //CONFIGURANDO HTTPS
 https.createServer({
     key: fs.readFileSync(__dirname + '/Server/security/server_key.pem'),
@@ -15,23 +15,21 @@ https.createServer({
         console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/`);
     }
 );
+*/
 
 
-
-/* //start the server
+//start the server
 app.listen(
-    process.env.ALLWAYSDATA_HTTPD_PORT,
-    process.env.ALLWAYSDATA_HTTPD_IP,
+    config.configServer.port,
     function() {
-        console.log(`aplicacion corriendo en http://localhost:${config.configServer.port}/mentaru/`);
-        console.log(`aplicacion corriendo en http://mentaru.alwaysdata.net/`);
+        console.log(`aplicacion corriendo en http://localhost:${config.configServer.port}/view/`);
     }
 );
- */
 
 
 
 
+/*
 // PROBANDO CONEXION CON LA BASE DE DATOS {MENTARU}
 // IMPORTANDO LOS MODULOS NECESARIOS
 const sql = require('mssql');
@@ -55,3 +53,4 @@ function prueba(req, res) {
         });
 };
 prueba();
+*/
