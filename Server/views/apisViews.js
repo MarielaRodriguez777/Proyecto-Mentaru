@@ -18,13 +18,17 @@ apisViews.use(express.static(path));
 // DEFINIENDO APIS PARA MOSTRAR CADA UNA DE LAS VISTA
 // -- VISTA index
 
+
+apisViews.get('/', (req, res) => {
+    res.sendFile(path + '/index.html');
+});
+
 apisViews.get('/estadisticas', (req, res) => {
-    /*if (req.session.name) {
-    	res.redirect('/mentaru')
-    } else {
-    	res.sendFile(path + '/index.html');
-    }*/
     res.sendFile(path + '/estadisticas.html');
+});
+
+apisViews.get('/estadisticasPrueba', (req, res) => {
+    res.sendFile(path + '/estadisticasprueba.html');
 });
 
 

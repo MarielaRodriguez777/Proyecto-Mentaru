@@ -19,31 +19,43 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session(config.configSession));
-app.use('/mentaru/', apisViews);
-app.use('/mentaru/api/EN', apisEN);
-//app.use('/mentaru/api/ES', apisES);
-//app.use('/mentaru/api/US', apisUS);
-//app.use('/mentaru/api/Miscelaneos', apisMiscelaneos);
-
+app.use('/view/', apisViews);
+app.use('/api/EN', apisEN);
+//app.use('/api/ES', apisES);
+//app.use('/api/US', apisUS);
+//app.use('/api/Miscelaneos', apisMiscelaneos);
 
 // Punto de inicio
-app.get('/mentaru/probarAPI', (req, res) => {
-    /*if (req.session.name) {
-    	functionsMiscelaneos.redirectById(req, res);
-    } else {
-    	res.redirect('/Mentaru/view/index');
-    }*/
-    res.redirect('/mentaru/api/EN/EN_IDENTIFICAR');
+app.get('/api/probarConexion', (req, res) => {
+    // PROBANDO CONEXION CON LA BASE DE DATOS {MENTARU}
+    // IMPORTANDO LOS MODULOS NECESARIOS
+    const sql = require('mssql');
+    const conn = require('./Server/db/connectionDB');
+    const { Console } = require('console');
+
+    conn.connect().then(function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM DATOS').then(function(result) {
+                conn.close();
+                console.log({ output: result.output, data: result.recordsets[0] });
+                res.send({ output: result.output, data: result.recordsets[0] });
+            }).catch(function(err) {
+                conn.close();
+                console.log('Error consulta');
+                res.send('Error consulta');
+            });
+        })
+        .catch(function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+            console.log('Error conexión');
+            res.send('Error conexión');
+        });
 });
 
+
 // Punto de inicio
-app.get('/mentaru/', (req, res) => {
-    /*if (req.session.name) {
-    	functionsMiscelaneos.redirectById(req, res);
-    } else {
-    	res.redirect('/Mentaru/view/index');
-    }*/
-    res.redirect('/mentaru/');
+app.get('/', (req, res) => {
+    res.redirect('/view/');
 });
 
 
