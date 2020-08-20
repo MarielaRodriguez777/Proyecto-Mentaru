@@ -27,6 +27,10 @@ apisViews.get('/estadisticas', (req, res) => {
     res.sendFile(path + '/estadisticas.html');
 });
 
+apisViews.get('/estadisticasPrueba', (req, res) => {
+    res.sendFile(path + '/estadisticasprueba.html');
+});
+
 
 // EXPORTANDO LA API QUE MUESTRA LA VISTA
 module.exports = apisViews;
