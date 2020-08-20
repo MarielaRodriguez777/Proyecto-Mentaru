@@ -8,6 +8,7 @@ const conn = require('../../db/connectionDB');
 // DEFINIENDO LAS FUNCIONES
 function EN_IDENTIFICAR(req, res) {
     console.log('API IDENTIFICAR');
+    res.send('API IDENTIFICAR');
     /*conn.connect().then(
         function() {
             var reqDB = new sql.Request(conn);

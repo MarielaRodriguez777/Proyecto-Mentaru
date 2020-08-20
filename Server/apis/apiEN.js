@@ -9,7 +9,7 @@ const functionsEN = require('./functionsQuerys/functionsEN');
 const apiEN = express.Router();
 
 // DEFINIENDO SUBRUTAS Y ATENCION A PETICIONES AL SERVIDOR
-apiEN.post('/EN_IDENTIFICAR', /*functionsMiscelaneos.authToken,*/ functionsEN.EN_IDENTIFICAR);
+apiEN.post('/EN_IDENTIFICAR', functionsEN.EN_IDENTIFICAR);
 
 
 

@@ -29,27 +29,6 @@ app.listen(
 
 
 
+/*
 
-// PROBANDO CONEXION CON LA BASE DE DATOS {MENTARU}
-// IMPORTANDO LOS MODULOS NECESARIOS
-const sql = require('mssql');
-const conn = require('./Server/db/connectionDB');
-const { Console } = require('console');
-
-function prueba(req, res) {
-    conn.connect().then(function() {
-            var reqDB = new sql.Request(conn);
-            reqDB.query('SELECT * FROM DATOS').then(function(result) {
-                conn.close();
-                console.log({ output: result.output, data: result.recordsets[0] });
-            }).catch(function(err) {
-                conn.close();
-                console.log('Error consulta');
-            });
-        })
-        .catch(function(err) {
-            res.send(messagesMiscelaneos.errorC1);
-            console.log('Error conexión');
-        });
-};
-prueba();
+prueba();*/
