@@ -29,7 +29,7 @@ app.listen(
 
 
 
-/*
+
 // PROBANDO CONEXION CON LA BASE DE DATOS {MENTARU}
 // IMPORTANDO LOS MODULOS NECESARIOS
 const sql = require('mssql');
@@ -53,4 +53,3 @@ function prueba(req, res) {
         });
 };
 prueba();
-*/
