@@ -5,24 +5,21 @@ var fs = require('fs');
 var https = require('https');
 
 
-/* //CONFIGURANDO HTTPS
+//CONFIGURANDO HTTPS
 https.createServer({
     key: fs.readFileSync(__dirname + '/Server/security/server_key.pem'),
     cert: fs.readFileSync(__dirname + '/Server/security/server_crt.pem')
 }, app).listen(
-    /* config.configServer.port, */
-/* process.env.ALLWAYSDATA_HTTPD_PORT,
-    process.env.ALLWAYSDATA_HTTPD_IP,
+    config.configServer.port,
     function() {
-        console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/mentaru/`);
-        console.log(`aplicacion corriendo en http://mentaru.alwaysdata.net/mentaru/`);
+        console.log(`aplicacion corriendo en https://localhost:${config.configServer.port}/`);
     }
 );
- */
 
-//start the server
+
+
+/* //start the server
 app.listen(
-    /* config.configServer.port, */
     process.env.ALLWAYSDATA_HTTPD_PORT,
     process.env.ALLWAYSDATA_HTTPD_IP,
     function() {
@@ -30,7 +27,7 @@ app.listen(
         console.log(`aplicacion corriendo en http://mentaru.alwaysdata.net/`);
     }
 );
-
+ */
 
 
 

@@ -19,7 +19,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session(config.configSession));
-app.use('/', apisViews);
+app.use('/view/', apisViews);
 app.use('/api/EN', apisEN);
 //app.use('/api/ES', apisES);
 //app.use('/api/US', apisUS);
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
     } else {
     	res.redirect('/view/index');
     }*/
-    res.redirect('/');
+    res.redirect('/view/');
 });
 
 
