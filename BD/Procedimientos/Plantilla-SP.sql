@@ -36,7 +36,11 @@ BEGIN
 
 
 		-- Validacion de campos nulos
-		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN
+		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN -- Para los parametros que no son numericos
+			SET @pmensaje = @pmensaje + ' campo1 ';
+		END;
+
+		IF @parametro1 IS NULL BEGIN -- Para los parametros que son numericos
 			SET @pmensaje = @pmensaje + ' campo1 ';
 		END;
 
