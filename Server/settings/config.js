@@ -14,6 +14,10 @@ module.exports = {
         database: "DB_A662AE_luisfer15",
         user: "DB_A662AE_luisfer15_admin",
         password: "extremo15",
+        /* server: "localhost",
+        database: "MENTARUDB",
+        user: "sa",
+        password: "1234", */
         port: 1433,
         parseJSON: true
     },
