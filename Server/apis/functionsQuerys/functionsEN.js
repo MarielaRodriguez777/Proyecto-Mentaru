@@ -4,6 +4,7 @@
 const sql = require('mssql');
 const conn = require('../../db/connectionDB');
 const messagesMiscelaneos = require('../../others/messagesMiscelaneos');
+const { Console } = require('console');
 
 // DEFINIENDO LAS FUNCIONES
 function EN_IDENTIFICAR(req, res) {
@@ -134,10 +135,186 @@ function EN_TRATAMIENTOS(req, res) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function VW_ANTECEDENTESP(req, res) {
+    console.log('API VW_ANTECEDENTESP');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_ANTECEDENTESP').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_ANTECEDENTESNP(req, res) {
+    console.log('API VW_ANTECEDENTESNP');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_ANTECEDENTESNP').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_LABORATORIOS(req, res) {
+    console.log('API VW_LABORATORIOS');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_LABORATORIOS').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_LASISTENCIA(req, res) {
+    console.log('API VW_LASISTENCIA');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_LASISTENCIA').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_MUNICIPIOS(req, res) {
+    console.log('API VW_MUNICIPIOS');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_MUNICIPIOS').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_SINTOMAS(req, res) {
+    console.log('API VW_SINTOMAS');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_SINTOMAS').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
+function VW_TRATAMIENTOS(req, res) {
+    console.log('API VW_TRATAMIENTOS');
+    conn.connect().then(
+        function() {
+            var reqDB = new sql.Request(conn);
+            reqDB.query('SELECT * FROM VW_TRATAMIENTOS').then(function(result) {
+                conn.close();
+                res.send(result);
+                console.log(result);
+            }).catch(function(err) {
+                conn.close();
+                res.send(messagesMiscelaneos.errorC2);
+            });
+        }
+    ).catch(
+        function(err) {
+            res.send(messagesMiscelaneos.errorC1);
+        }
+    );
+};
+
+
 // EXPORTANDO LAS FUNCIONES QUE ATENDERAN LAS PETICIONES
 module.exports = {
     EN_IDENTIFICAR,
     EN_INFO,
     EN_SINTOMAS,
-    EN_TRATAMIENTOS
+    EN_TRATAMIENTOS,
+    VW_ANTECEDENTESP,
+    VW_ANTECEDENTESNP,
+    VW_LABORATORIOS,
+    VW_LASISTENCIA,
+    VW_MUNICIPIOS,
+    VW_SINTOMAS,
+    VW_TRATAMIENTOS
 };
