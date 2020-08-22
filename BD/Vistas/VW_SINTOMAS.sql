@@ -11,4 +11,4 @@ AS SELECT
 	, T1.campo3 AS alias3
 FROM nombreTabla T1
 --INNER JOIN...
---WHERE campo1 = @condicion1
+--WHERE T1.campo1 = @condicion1
