@@ -122,37 +122,20 @@
                         <div class="form-group">
                             <select class="form-control-select form-control form-control-lg" id="identificarse" required>
 								<option class="select-option" value="" disabled selected>identificarse</option>
-								<option class="select-option" value="Delete data">Delete my data</option>
-								<option class="select-option" value="Show me data">Show me my data</option>
+								<option class="select-option" value="TELEFONO">Número Télefonico</option>
+								<option class="select-option" value="IDENTIDAD">Número de Identidad</option>
+								<option class="select-option" value="PRUEBA">Código de Prueba</option>
 							</select>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <form id="contactForm" data-toggle="validator" data-focus="false">
-                        <div class="form-group">
-                            <select class="form-control-select form-control form-control-lg" id="laboratorio" required>
-								<option class="select-option" value="" disabled selected>Elija el laboratorio donde se realizó la prueba</option>
-								<option class="select-option" value="Delete data">Delete my data</option>
-								<option class="select-option" value="Show me data">Show me my data</option>
-							</select>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <form id="contactForm" data-toggle="validator" data-focus="false">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="prueba" required>
-                            <label class="label-control" for="prueba">Ingrese el código de su examen</label>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </form>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="render-identificarse" style="justify-content: space-around;">
+
                 </div>
                 <!--Boton del módulo-->
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="float: left;">
-                    <button type="submit" style="max-width: fit-content;" class="form-control-submit-button1">Encontrar Prueba</button>
+                    <button type="submit" id="btn-encontrarPrueba" style="max-width: fit-content;" class="form-control-submit-button1">Encontrar Prueba</button>
                 </div><br><br><br>
                 <!--Fin del cuerpo del modulo-->
             </div>
@@ -257,20 +240,16 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>¿Padece de Diabetes?
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">¿Padece de Diabetes?
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>¿Padece de Hipertensión?
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">¿Padece de Hipertensión?
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>¿Padece de Insuficiencia Renal?
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">¿Padece de Insuficiencia Renal?
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>¿Padece de Asma?
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">¿Padece de Asma?
                                 </div>
                             </form>
                         </div>
@@ -282,23 +261,19 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>¿Ha estado en el extranjero en los últimos 14 días?</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>¿Ha visitado sitios concurridos en los últimos 14 días?</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>¿Mantuvo contacto con una persona diagnosticada de Covid-19?</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>¿Lo han visitado últimamente?
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">¿Lo han visitado últimamente?
                                 </div>
                             </form>
                         </div>
@@ -388,16 +363,13 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>Tos Seca
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">Tos Seca
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>Fiebre
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">Fiebre
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>Diarrea
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">Diarrea
                                 </div>
                             </form>
                         </div>
@@ -412,23 +384,19 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Cansancio Residente</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Dolor de Garganta</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Secreción Nasal </a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>Naúseas
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">Naúseas
                                 </div>
                             </form>
                         </div>
@@ -443,23 +411,19 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Díficultad para respirar</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Incapacidad para hablar o moverse</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>
+                                    <input type="checkbox">
                                     <a>Dolor de Cabeza</a>
-                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group checkbox col-12">
-                                    <input type="checkbox" required>Dolor de cuerpo
-                                    <div class="help-block with-errors"></div>
+                                    <input type="checkbox">Dolor de cuerpo
                                 </div>
                             </form>
                         </div>

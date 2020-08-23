@@ -20,7 +20,7 @@ FN_Render_LugarAsistencia();
 imprimir('');
 
 imprimir('Funciones de peticiones AJAX');
-FN_Peticion_IdentificarPersona();
+/* FN_Peticion_IdentificarPersona(); */
 FN_Peticion_Departamentos();
 FN_Peticion_Antecedentes();
 FN_Peticion_Sintomas();
@@ -28,13 +28,14 @@ FN_Peticion_AsistenciaMedica();
 FN_Peticion_EnviarEncuesta();
 
 
-$("#cmb-identificacion").onchange(function() {
+$("#identificarse").change(function() {
     imprimir('Se ha cambiado el valor del combobox ...');
 
+    FN_Render_Identificarse();
 });
 
 
-$("#btn-encontrarPrueba").onchange(function() {
+$("#btn-encontrarPrueba").click(function() {
     imprimir('Se ha pulsado el boton ...');
     FN_Peticion_IdentificarPersona();
 });

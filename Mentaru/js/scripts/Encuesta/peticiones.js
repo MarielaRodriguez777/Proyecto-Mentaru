@@ -3,11 +3,13 @@ const FN_Peticion_IdentificarPersona = () => {
     // Identificar la persona con las pruebas del COVID-19
     // Realizar peticion AJAX
     $.ajax({
-        url: "https://localhost:3000/mentaru/api/ruta",
+        url: "http://localhost:3000/api/EN/EN_IDENTIFICAR",
         data: {
-            "accion": "PRUEBA",
-            "campo1": "valor1",
-            "campo2": "valor2",
+            "accion": $('#identificarse').val(),
+            "numeroIdentidad": $('#txtIdentidad').val(),
+            "numeroTelefono": $('#txtTelefono').val(),
+            "codigoLaboratorio": $('#laboratorio').val(),
+            "codigoPrueba": $('#txtPrueba').val(),
         },
         dataType: "json",
         method: "POST",
