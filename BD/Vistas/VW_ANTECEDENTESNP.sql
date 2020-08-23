@@ -6,8 +6,8 @@
 */
 CREATE OR ALTER VIEW VW_ANTECEDENTESNP
 AS SELECT
-	n.idNoPatogia AS id
+	n.idNoPatologia AS id
 	, n.descripcion AS nombreNoPatologia
-FROM NoPatogia n
+FROM NoPatologia n
 --INNER JOIN...
 --WHERE T1.campo1 = @condicion1
