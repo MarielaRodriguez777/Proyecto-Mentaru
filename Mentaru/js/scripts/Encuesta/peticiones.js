@@ -3,6 +3,7 @@ const FN_Peticion_IdentificarPersona = () => {
     // Identificar la persona con las pruebas del COVID-19
     // Realizar peticion AJAX
     $.ajax({
+        //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
         url: "http://localhost:3000/api/EN/EN_IDENTIFICAR",
         data: {
             "accion": $('#identificarse').val(),
@@ -19,6 +20,7 @@ const FN_Peticion_IdentificarPersona = () => {
             } else {
                 console.log(respuesta.pmensaje);
             }
+            console.log(respuesta);
         },
         error: function(error) {
             console.log(error.responseText);
