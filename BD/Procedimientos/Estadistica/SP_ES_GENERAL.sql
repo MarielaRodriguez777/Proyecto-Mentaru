@@ -10,13 +10,13 @@
  * Salida mediante SELECT: idTratamiento, nombreTratamiento, idLugarAsistencia, nombreLugarAsistencia, cantidadTratamientos
  *
  * ES_NOPATOLOGIA: @paccion
- * Salida mediante SELECT: idNoPatologia, descipicionNoPatologia, cantidadNoPatologia
+ * Salida mediante SELECT: idNoPatologia, descripicionNoPatologia, cantidadNoPatologia
  *
  * ES_PATOLOGIA: @paccion
- * Salida mediante SELECT: idPatologia, descipicionPatologia, cantidadPatologia
+ * Salida mediante SELECT: idPatologia, descripicionPatologia, cantidadPatologia
  *
 */
-CREATE OR ALTER PROCEDURE SP_ES_GENERAL ( --Ejemplo: SP_GU_LOGIN: Procedimiento Almacenado, Modulo GestionUsuario, Procedimiento para el Login. Puede borrar este comentario.
+CREATE OR ALTER PROCEDURE SP_ES_GENERAL (
 	-- Parametros de Entrada
 	@paccion					VARCHAR(45),
 
@@ -29,81 +29,97 @@ CREATE OR ALTER PROCEDURE SP_ES_GENERAL ( --Ejemplo: SP_GU_LOGIN: Procedimiento 
 
 ) AS
 BEGIN
-	-- Declaracion de Variables
-	DECLARE	@vconteo INT;
 
+	-- Establecer Valores
+	SET @pcodigoMensaje=0;
+	SET @pmensaje='';
 
-
-	/* Funcionalidad: <nombre_funcionalidad>
-	 * Descripcion Funcionalidad:
+	/* Funcionalidad: ES_CONTAGIOSHN
+	 * Descripcion Funcionalidad: obtener las estadisticas generales sobre contagios a nivel nacional
 	*/
-	IF @paccion = 'ACTION' BEGIN
-		-- Setear Valores
-		SET @pcodigoMensaje=0;
-		SET @pmensaje='';
-
-
-
-		-- Validacion de campos nulos
-		IF @parametro1 = '' OR @parametro1 IS NULL BEGIN -- Para los parametros que no son numericos
-			SET @pmensaje = @pmensaje + ' campo1 ';
-		END;
-
-		IF @parametro1 IS NULL BEGIN -- Para los parametros que son numericos
-			SET @pmensaje = @pmensaje + ' campo1 ';
-		END;
-
-		IF @pmensaje <> '' BEGIN
-			SET @pcodigoMensaje = 4;
-			SET @pmensaje = 'Error: Campos vacios: ' + @pmensaje;
-			RETURN;
-		END;
-
-
-
-		-- Validacion de identificadores
-		-- Validar que el identificador deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
-		IF @vconteo = 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @parametro1 + ' ';
-		END;
-
-		-- Validar que el identificador no deba existir en la tabla
-		SELECT @vconteo = COUNT(*) FROM Tabla
-		WHERE campo1 = @parametro1;
-		IF @vconteo <> 0 BEGIN --Usar cuando en caso de ser necesario
-			SET @pmensaje = @pmensaje + ' Ya existe el identificador => ' + @parametro1 + ' ';
-		END;
-
-		-- NOTA: Si da error es porque ncesita convertir el parametro entero a cadena, ejemplo: CAST(@parametro1 AS VARCHAR)
-
-		IF @pmensaje <> '' BEGIN
-			SET @pcodigoMensaje = 5;
-			SET @pmensaje = 'Error: Identificadores no validos: ' + @pmensaje;
-			RETURN;
-		END;
-
-
-
-		-- Validacion de procedimientos
-		/* Validaciones ha realizar
-		 * 1.
-		 * 2.
-		 * 3-
-		*/
-
-
-		IF @pmensaje <> '' BEGIN
-			SET @pcodigoMensaje = 6;
-			SET @pmensaje = 'Error: Validacion en la condicion del procdimiento: ' + @pmensaje;
-			RETURN;
-		END;
+	IF @paccion = 'ES_CONTAGIOSHN' BEGIN
 
 
 
 		-- Accion del procedimiento
+		SELECT mu.idMunicipio, mu.descripcion nombreMunicipio, dp.idDepartamento, dp.descripcion Departamento, SUM(cc.cantidadContagios) totalContagios FROM Municipio mu
+		INNER JOIN Departamento dp ON mu.Departamento_idDepartamento = dp.idDepartamento
+		INNER JOIN CronologiaContagios cc ON mu.idMunicipio = cc.Municipio_idMunicipio
+		GROUP BY mu.idMunicipio, mu.descripcion, dp.idDepartamento, dp.descripcion;
 
+
+		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
+	END;
+
+
+
+	/* Funcionalidad: ES_SINTOMAS
+	 * Descripcion Funcionalidad: obtener las estadisticas de los sintomas que presentan las personas encuestadas
+	*/
+	IF @paccion = 'ES_SINTOMAS' BEGIN
+
+
+
+		-- Accion del procedimiento
+		SELECT si.idSintoma, si.descripcion nombreSintoma, ts.idTipoSintoma, ts.descripcion, COUNT(ls.Sintoma_idSintoma) cantidadSintomas FROM Sintoma si
+		INNER JOIN TipoSintoma ts ON si.TipoSintomas_idTipoSintomas = ts.idTipoSintoma
+		INNER JOIN listaSintomas ls ON si.idSintoma = ls.Sintoma_idSintoma
+		GROUP BY si.idSintoma, si.descripcion, ts.idTipoSintoma, ts.descripcion;
+
+
+		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
+	END;
+
+
+
+	/* Funcionalidad: ES_TRATAMIENTOS
+	 * Descripcion Funcionalidad: obtener las estadisticas de los tratamientos que han tomado las personas que respondieron la encuesta
+	*/
+	IF @paccion = 'ES_TRATAMIENTOS' BEGIN
+
+
+
+		-- Accion del procedimiento
+		SELECT tr.idTratamiento, tr.descripcion nombreTratamiento, la.idLugarAsistencia, la.descripcion nombreLugarAsistencia, SUM(am.Tratamiento_idTratamiento) cantidadTratamientos FROM Tratamiento tr
+		INNER JOIN AsistenciaMedica am ON tr.idTratamiento = am.Tratamiento_idTratamiento
+		INNER JOIN LugarAsistencia la ON am.LugarAsistencia_idLugarAsistencia = la.idLugarAsistencia
+		GROUP BY tr.idTratamiento, tr.descripcion, la.idLugarAsistencia, la.descripcion;
+
+
+		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
+	END;
+
+
+
+	/* Funcionalidad: ES_NOPATOLOGIA
+	 * Descripcion Funcionalidad: obtener las estadisticas de los antecedentes no patologicos de las personas encuestadas
+	*/
+	IF @paccion = 'ES_NOPATOLOGIA' BEGIN
+
+
+
+		-- Accion del procedimiento
+		SELECT np.idNoPatologia, np.descripcion descripcionNoPatologia, SUM(ln.NoPatologia_idNoPatologia) cantidadNoPatologia FROM NoPatologia np
+		INNER JOIN ListaAntecedentesNP ln ON NP.idNoPatologia = ln.NoPatologia_idNoPatologia
+		GROUP BY np.idNoPatologia, np.descripcion;
+
+
+		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
+	END;
+
+
+
+	/* Funcionalidad: ES_PATOLOGIA
+	 * Descripcion Funcionalidad: obtener las estadisticas de los antecedentes patologicos de las personas que respondieron la encuesta
+	*/
+	IF @paccion = 'ES_PATOLOGIA' BEGIN
+
+
+
+		-- Accion del procedimiento
+		SELECT p.idPatologia, p.descripcion descripcionPatologia, SUM(lp.Patologia_idPatologia) cantidadPatologia FROM Patologia p
+		INNER JOIN ListaAntecedentesP lp ON p.idPatologia = lp.Patologia_idPatologia
+		GROUP BY p.idPatologia, p.descripcion;
 
 
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
