@@ -1,14 +1,15 @@
-/* Vista: <nombre_vista>
- * Descripcion vista:
+/* Vista: VW_SINTOMAS
+ * Descripcion vista: lista de los sintomas
  *
- * Datos de Salida:
+ * Datos de Salida: idSintoma, descripcion, TipoSintomas_idTipoSintomas
  *
 */
-CREATE OR ALTER VIEW VW_NOMBRE
+CREATE OR ALTER VIEW VW_SINTOMAS
 AS SELECT
-	T1.campo1 AS alias1
-	, T1.campo2 AS alias2
-	, T1.campo3 AS alias3
-FROM nombreTabla T1
+	s.idSintoma AS id
+	, s.descripcion AS sintoma
+	, s.TipoSintomas_idTipoSintomas AS TipoDeSintoma
+	
+FROM Sintoma s
 --INNER JOIN...
 --WHERE T1.campo1 = @condicion1

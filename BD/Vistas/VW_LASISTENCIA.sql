@@ -6,9 +6,8 @@
 */
 CREATE OR ALTER VIEW VW_LASISTENCIA
 AS SELECT
-	T1.campo1 AS alias1
-	, T1.campo2 AS alias2
-	, T1.campo3 AS alias3
-FROM nombreTabla T1
+	la.idLugarAsistencia AS id
+	, la.descripcion AS lugar
+	FROM LugarAsistencia la
 --INNER JOIN...
 --WHERE T1.campo1 = @condicion1

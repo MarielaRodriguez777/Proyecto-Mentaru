@@ -1,4 +1,4 @@
--- <=== Encuesta ===>
+﻿-- <=== Encuesta ===>
 /* Requisitos de las acciones:
  * Estas acciones no tienen la utltima validacion, por lo tanto no habrá un codigo numero 6.
  *
@@ -198,14 +198,14 @@ BEGIN
 		SELECT @vconteo = COUNT(*) FROM Persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidPersona + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidPersona AS VARCHAR) + ' ';
 		END;
 
 		-- Validar que el identificador no deba existir en la tabla
 		SELECT @vconteo = COUNT(*) FROM Patologia
 		WHERE idPatologia = @pidPatologia;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidPatologia + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidPatologia AS VARCHAR) + ' ';
 		END;
 
 		IF @pmensaje <> '' BEGIN
@@ -262,14 +262,14 @@ BEGIN
 		SELECT @vconteo = COUNT(*) FROM Persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidPersona + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidPersona AS VARCHAR) + ' ';
 		END;
 
 		-- Validar que el identificador no deba existir en la tabla
 		SELECT @vconteo = COUNT(*) FROM NoPatologia
 		WHERE @pidNoPatologia = @pidNoPatologia;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidNoPatologia + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidNoPatologia AS VARCHAR) + ' ';
 		END;
 
 		IF @pmensaje <> '' BEGIN
@@ -326,7 +326,7 @@ BEGIN
 		SELECT @vconteo = COUNT(*) FROM Persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidPersona + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidPersona AS VARCHAR) + ' ';
 		END;
 
 		IF @pmensaje <> '' BEGIN
@@ -380,7 +380,7 @@ BEGIN
 		SELECT @vconteo = COUNT(*) FROM Persona
 		WHERE idPersona = @pidPersona;
 		IF @vconteo = 0 BEGIN
-			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + @pidPersona + ' ';
+			SET @pmensaje = @pmensaje + ' No existe el identificador => ' + CAST(@pidPersona AS VARCHAR) + ' ';
 		END;
 
 		IF @pmensaje <> '' BEGIN
