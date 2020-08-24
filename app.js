@@ -7,7 +7,7 @@ const config = require('./Server/settings/config');
 // IMPORTANTDO APIS
 const apisViews = require('./Server/views/apisViews');
 const apisEN = require('./Server/apis/apiEN');
-//const apisES = require('./Server/apis/apiES');
+const apisES = require('./Server/apis/apiES');
 //const apisUS = require('./Server/apis/apiUS');
 //const apisMiscelaneos = require('./Server/apis/apiMiscelaneos');
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(session(config.configSession));
 app.use('/view/', apisViews);
 app.use('/api/EN', apisEN);
-//app.use('/api/ES', apisES);
+app.use('/api/ES', apisES);
 //app.use('/api/US', apisUS);
 //app.use('/api/Miscelaneos', apisMiscelaneos);
 
@@ -32,24 +32,24 @@ app.get('/api/probarConexion', (req, res) => {
     const sql = require('mssql');
     const conn = require('./Server/db/connectionDB');
     const { Console } = require('console');
-
-    conn.connect().then(function() {
+    console.log('API VW_MUNICIPIOS');
+    conn.connect().then(
+        function() {
             var reqDB = new sql.Request(conn);
-            reqDB.query('SELECT * FROM DATOS').then(function(result) {
+            reqDB.query('SELECT * FROM Datos').then(function(result) {
                 conn.close();
-                console.log({ output: result.output, data: result.recordsets[0] });
-                res.send({ output: result.output, data: result.recordsets[0] });
+                res.send(result);
+                console.log(result);
             }).catch(function(err) {
                 conn.close();
-                console.log('Error consulta');
-                res.send('Error consulta');
+                res.send(messagesMiscelaneos.errorC2);
             });
-        })
-        .catch(function(err) {
+        }
+    ).catch(
+        function(err) {
             res.send(messagesMiscelaneos.errorC1);
-            console.log('Error conexión');
-            res.send('Error conexión');
-        });
+        }
+    );
 });
 
 
