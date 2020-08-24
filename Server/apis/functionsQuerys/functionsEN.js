@@ -157,7 +157,7 @@ function VW_ANTECEDENTESP(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_ANTECEDENTESP').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -178,7 +178,7 @@ function VW_ANTECEDENTESNP(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_ANTECEDENTESNP').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -199,7 +199,7 @@ function VW_LABORATORIOS(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_LABORATORIOS').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -220,7 +220,7 @@ function VW_LASISTENCIA(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_LASISTENCIA').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -241,7 +241,7 @@ function VW_MUNICIPIOS(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_MUNICIPIOS').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -262,7 +262,7 @@ function VW_SINTOMAS(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_SINTOMAS').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -283,7 +283,7 @@ function VW_TRATAMIENTOS(req, res) {
             var reqDB = new sql.Request(conn);
             reqDB.query('SELECT * FROM VW_TRATAMIENTOS').then(function(result) {
                 conn.close();
-                res.send(result);
+                res.send({ output: result.output, data: result.recordsets[0] });
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);

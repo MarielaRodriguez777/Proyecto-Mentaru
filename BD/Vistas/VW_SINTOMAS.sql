@@ -6,10 +6,11 @@
 */
 CREATE OR ALTER VIEW VW_SINTOMAS
 AS SELECT
-	s.idSintoma AS id
-	, s.descripcion AS sintoma
-	, s.TipoSintomas_idTipoSintomas AS TipoDeSintoma
-	
+	s.idSintoma AS idSintoma
+	, s.descripcion AS nombreSintoma
+	, s.TipoSintomas_idTipoSintomas AS idTipoSintoma
+	, ts.descripcion as nombreTipoSintoma
 FROM Sintoma s
+inner join TipoSintoma ts on ts.idTipoSintoma = s.TipoSintomas_idTipoSintomas
 --INNER JOIN...
 --WHERE T1.campo1 = @condicion1

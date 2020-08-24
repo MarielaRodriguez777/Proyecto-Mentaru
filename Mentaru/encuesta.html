@@ -141,8 +141,19 @@
             </div>
             <!--Fin módulo-->
 
+
+
+
+
+
+
+
+
+
+
+
             <!--Inicio del segundo Módulo: Información del paciente-->
-            <div class="row content2 border border-dark">
+            <div class="row content2 border border-dark" id="div_info">
                 <!--Encabezado del módulo-->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <h5><b>Información del Paciente</b></h5><br>
@@ -153,8 +164,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="nombre" required>
-                            <label class="label-control" for="nombre">Nombre</label>
+                            <input type="text" class="form-control-input" id="info_txtNombres" required>
+                            <label class="label-control" for="info_txtNombres">Nombres</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -162,8 +173,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="apellidos" required>
-                            <label class="label-control" for="apellidos">Apelllido</label>
+                            <input type="text" class="form-control-input" id="info_txtApellidos" required>
+                            <label class="label-control" for="info_txtApellidos">Apelllidos</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -171,8 +182,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="identidad" required>
-                            <label class="label-control" for="identidad">Número de Identidad</label>
+                            <input type="text" class="form-control-input" id="infor_txtIdentidad" required>
+                            <label class="label-control" for="infor_txtIdentidad">Número de Identidad</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -180,8 +191,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="telefono" required>
-                            <label class="label-control" for="telefono">Número de Teléfono</label>
+                            <input type="text" class="form-control-input" id="infor_txtTelefono" required>
+                            <label class="label-control" for="infor_txtTelefono">Número de Teléfono</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -189,8 +200,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="number" class="form-control-input" id="edad" required>
-                            <label class="label-control" for="edad">Edad</label>
+                            <input type="number" class="form-control-input" id="infor_txtEdad" required>
+                            <label class="label-control" for="infor_txtEdad">Edad</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -198,18 +209,18 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <h4 align="center"><b>Género</b></h4>
-                        <div style="width: auto;" align="center">
-                            <input type="radio" style="width: auto;" id="masculino" name="priority" value="1" />
-                            <label style="color: black; margin-right: 5rem;" for="masculino">Masculino</label>
-                            <input type="radio" style="width: auto" id="femenino" value="2" name="priority" />
-                            <label style="color: black;" for="femenino">Femenino</label>
+                        <div style="width: auto;" align="center" id="div_info_optGenero">
+                            <input type="radio" style="width: auto;" id="info_optMasculino" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="info_optMasculino">Masculino</label>
+                            <input type="radio" style="width: auto" id="info_optFemenino" value="2" name="priority" />
+                            <label style="color: black;" for="info_optFemenino">Femenino</label>
                         </div>
                     </form>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <select class="form-control-select" id="departamento" required>
+                            <select class="form-control-select" id="info_cmbDepartamentos" required>
 								<option class="select-option" value="" disabled selected>Departamento</option>
 								<option class="select-option" value="Delete data">Delete my data</option>
 								<option class="select-option" value="Show me data">Show me my data</option>
@@ -221,7 +232,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <select class="form-control-select" id="municipio" required>
+                            <select class="form-control-select" id="info_cmbMunicipios" required>
 								<option class="select-option" value="" disabled selected>Municipio</option>
 								<option class="select-option" value="Delete data">Delete my data</option>
 								<option class="select-option" value="Show me data">Show me my data</option>
@@ -238,18 +249,22 @@
                             <h5><b>Antecendentes Patológicos</b></h5><br>
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">¿Padece de Diabetes?
+                            <form class="form-row" id="AntecedentesP_chek" data-toggle="validator" data-focus="false">
+                                <div class="form-group checkbox col-12" id="AntecedentesP_chek_1">
+                                    <input type="checkbox">
+                                    <a>¿Padece de Diabetes?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">¿Padece de Hipertensión?
+                                <div class="form-group checkbox col-12" id="AntecedentesP_chek_2">
+                                    <input type="checkbox">
+                                    <a>¿Padece de Hipertensión?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">¿Padece de Insuficiencia Renal?
+                                <div class="form-group checkbox col-12" id="AntecedentesP_chek_3">
+                                    <input type="checkbox">
+                                    <a>¿Padece de Insuficiencia Renal?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">¿Padece de Asma?
+                                <div class="form-group checkbox col-12" id="AntecedentesP_chek_4">
+                                    <input type="checkbox">
+                                    <a>¿Padece de Asma?</a>
                                 </div>
                             </form>
                         </div>
@@ -259,21 +274,22 @@
                             <h5><b>Antecendentes No Patológicos</b></h5><br>
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
-                                <div class="form-group checkbox col-12">
+                            <form class="form-row" id="AntecedentesNP_chek" data-toggle="validator" data-focus="false">
+                                <div class="form-group checkbox col-12" id="AntecedentesNP_chek_1">
                                     <input type="checkbox">
                                     <a>¿Ha estado en el extranjero en los últimos 14 días?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
+                                <div class="form-group checkbox col-12" id="AntecedentesNP_chek_2">
                                     <input type="checkbox">
                                     <a>¿Ha visitado sitios concurridos en los últimos 14 días?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
+                                <div class="form-group checkbox col-12" id="AntecedentesNP_chek_3">
                                     <input type="checkbox">
                                     <a>¿Mantuvo contacto con una persona diagnosticada de Covid-19?</a>
                                 </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">¿Lo han visitado últimamente?
+                                <div class="form-group checkbox col-12" id="AntecedentesNP_chek_">
+                                    <input type="checkbox">
+                                    <a>¿Lo han visitado últimamente?</a>
                                 </div>
                             </form>
                         </div>
@@ -284,19 +300,19 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <h5 align="center"><b>¿Se ha contagiado anteriormente de Covid-19?</b></h5>
-                        <div style="width: auto;" align="center">
-                            <input type="radio" style="width: auto;" id="si" name="priority" value="1" />
-                            <label style="color: black; margin-right: 5rem;" for="si">Si</label>
-                            <input type="radio" style="width: auto" id="no" value="2" name="priority" />
-                            <label style="color: black;" for="no">No</label>
+                        <div style="width: auto;" align="center" id="div_info_optAnterior">
+                            <input type="radio" style="width: auto;" id="info_optAnteriorSI" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="info_optAnteriorSI">Si</label>
+                            <input type="radio" style="width: auto" id="info_optAnteriorNO" value="2" name="priority" />
+                            <label style="color: black;" for="info_optAnteriorNO">No</label>
                         </div>
                     </form>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="number" class="form-control-input" id="personas" required>
-                            <label class="label-control" for="personas">¿Cuántas personas viven con usted?</label>
+                            <input type="number" class="form-control-input" id="info_textCVivienda" required>
+                            <label class="label-control" for="info_textCVivienda">¿Cuántas personas viven con usted?</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -304,11 +320,11 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <h5 align="center"><b>¿Usted se encuentra?</b></h5>
-                        <div style="width: auto;" align="center">
-                            <input type="radio" style="width: auto;" id="contagio" name="priority" value="1" />
-                            <label style="color: black; margin-right: 5rem;" for="contagio">Contagiado</label>
-                            <input type="radio" style="width: auto" id="contagio" value="2" name="priority" />
-                            <label style="color: black;" for="contagio">Recuperado</label>
+                        <div style="width: auto;" align="center" id="div_info_optRecuperado">
+                            <input type="radio" style="width: auto;" id="info_optContagiado" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="info_optContagiado">Contagiado</label>
+                            <input type="radio" style="width: auto" id="info_optRecuperado" value="2" name="priority" />
+                            <label style="color: black;" for="info_optRecuperado">Recuperado</label>
                         </div>
                     </form>
                 </div>
@@ -316,8 +332,18 @@
             </div>
             <!--fin del modulo-->
 
+
+
+
+
+
+
+
+
+
+
             <!--Inicio del modulo: Covid-19-->
-            <div class="row content2 border border-dark">
+            <div class="row content2 border border-dark" id="div_acer">
                 <!--Encabezado-->
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <h5><b>Acerca del Covid-19</b></h5><br>
@@ -328,8 +354,8 @@
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-                            <input type="number" class="form-control-input" id="cuarentena" required>
-                            <label class="label-control" for="cuarentena">¿Cuántos días lleva en cuarentena?</label>
+                            <input type="number" class="form-control-input" id="acer_txtDiasCuarentena" required>
+                            <label class="label-control" for="acer_txtDiasCuarentena">¿Cuántos días lleva en cuarentena?</label>
                             <div class="help-block with-errors"></div>
                         </div>
                     </form>
@@ -337,11 +363,11 @@
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <h5 align="center"><b>¿Presenta algún tipo de síntoma?</b></h5>
-                        <div style="width: auto;" align="center">
-                            <input type="radio" style="width: auto;" id="sintoma" name="priority" value="1" />
-                            <label style="color: black; margin-right: 5rem;" for="sintoma">Si</label>
-                            <input type="radio" style="width: auto" id="sintoma1" value="2" name="priority" />
-                            <label style="color: black;" for="sintoma1">No</label>
+                        <div style="width: auto;" align="center" id="div_acer_optSintoma">
+                            <input type="radio" style="width: auto;" id="acer_optSintomaSI" name="priority" value="1" />
+                            <label style="color: black; margin-right: 5rem;" for="acer_optSintomaSI">Si</label>
+                            <input type="radio" style="width: auto" id="acer_optSintomaNO" value="2" name="priority" />
+                            <label style="color: black;" for="acer_optSintomaNO">No</label>
                         </div>
                     </form>
                 </div>
@@ -355,87 +381,89 @@
                     </div>
                     <!--fin del titulo del submodulo-->
 
-                    <!--Inicio del 1er div-->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark">
-                        <div>
-                            <h5><b>Síntomas Comunes</b></h5><br>
+                    <div class="row" id="div_acer_listaSintomas">
+                        <!--Inicio del 1er div-->
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark" id="listaSintomas1">
+                            <div>
+                                <h5><b id="listaSintomas1_titulo">Síntomas Comunes</b></h5><br>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <form class="form-row" id="listaSintomas1_check" data-toggle="validator" data-focus="false">
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox" id="listaSintomas1_check_1">Tos Seca
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox" id="listaSintomas1_check_2">Fiebre
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox" id="listaSintomas1_check_3">Diarrea
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">Tos Seca
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">Fiebre
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">Diarrea
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!--Fin del 1er div-->
+                        <!--Fin del 1er div-->
 
-                    <!--Inicio del 2do div-->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark">
-                        <div>
-                            <h5><b>Síntomas No Comunes</b></h5><br>
+                        <!--Inicio del 2do div-->
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark" id="listaSintomas2">
+                            <div>
+                                <h5><b id="listaSintomas2_titulo">Síntomas No Comunes</b></h5><br>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <form class="form-row" id="listaSintomas2_check" data-toggle="validator" data-focus="false">
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Cansancio Residente</a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Dolor de Garganta</a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Secreción Nasal </a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">Naúseas
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Cansancio Residente</a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Dolor de Garganta</a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Secreción Nasal </a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">Naúseas
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!--Fin del 2do div-->
+                        <!--Fin del 2do div-->
 
-                    <!--Inicio del 3er div-->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark">
-                        <div>
-                            <h5><b>Síntomas Graves</b></h5><br>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Díficultad para respirar</a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Incapacidad para hablar o moverse</a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">
-                                    <a>Dolor de Cabeza</a>
-                                </div>
-                                <div class="form-group checkbox col-12">
-                                    <input type="checkbox">Dolor de cuerpo
-                                </div>
-                            </form>
-                        </div>
-                    </div><br>
-                    <!--Fin del 3er div-->
+                        <!--Inicio del 3er div-->
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 content3 border border-dark">
+                            <div>
+                                <h5><b>Síntomas Graves</b></h5><br>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <form class="form-row" id="contactForm" data-toggle="validator" data-focus="false">
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Díficultad para respirar</a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Incapacidad para hablar o moverse</a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">
+                                        <a>Dolor de Cabeza</a>
+                                    </div>
+                                    <div class="form-group checkbox col-12">
+                                        <input type="checkbox">Dolor de cuerpo
+                                    </div>
+                                </form>
+                            </div>
+                        </div><br>
+                        <!--Fin del 3er div-->
+                    </div>
 
                     <!--Inicio del 4to div-->
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <form id="contactForm" data-toggle="validator" data-focus="false">
                             <div class="form-group">
-                                <input type="number" class="form-control-input" id="presenta" required>
-                                <label class="label-control" for="presenta">¿Cuántos días lleva presentando síntomas?</label>
+                                <input type="number" class="form-control-input" id="acer_txtDiasSintomas" required>
+                                <label class="label-control" for="acer_txtDiasSintomas">¿Cuántos días lleva presentando síntomas?</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </form>
@@ -447,21 +475,21 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <br>
                     <h5><b>¿Recibe atención médica?</b></h5>
-                    <div style="width: auto;">
-                        <input type="radio" style="width: auto;" id="sintoma" name="priority" value="1" />
-                        <label style="color: black; margin-right: 5rem;" for="sintoma">Si</label>
-                        <input type="radio" style="width: auto" id="sintoma1" value="2" name="priority" />
-                        <label style="color: black;" for="sintoma1">No</label>
+                    <div style="width: auto;" id="div_acer_optAsistencia">
+                        <input type="radio" style="width: auto;" id="acer_optAsistenciaSI" name="priority" value="1" />
+                        <label style="color: black; margin-right: 5rem;" for="acer_optAsistenciaSI">Si</label>
+                        <input type="radio" style="width: auto" id="acer_optAsistenciaNO" value="2" name="priority" />
+                        <label style="color: black;" for="acer_optAsistenciaNO">No</label>
                     </div>
                 </div>
 
                 <!--Inicio del 2do submodulo: tratamiento-->
-                <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content4 border border-dark">
+                <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 content4 border border-dark" id="div_tratamiento">
                     <!--Inicio 1er div-->
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <form id="contactForm" data-toggle="validator" data-focus="false">
                             <div class="form-group">
-                                <select class="form-control-select form-control form-control-lg" id="seguimiento" required>
+                                <select class="form-control-select form-control form-control-lg" id="acer_cmbTratamiento" required>
 									<option class="select-option" value="" disabled selected>¿Qué tratamiento está siguiendo?</option>
 									<option class="select-option" value="Delete data">Delete my data</option>
 									<option class="select-option" value="Show me data">Show me my data</option>
@@ -476,7 +504,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <form id="contactForm" data-toggle="validator" data-focus="false">
                             <div class="form-group">
-                                <select class="form-control-select form-control form-control-lg" id="asistencia" required>
+                                <select class="form-control-select form-control form-control-lg" id="acer_cmbLugarAsistencia" required>
 									<option class="select-option" value="" disabled selected>¿Dónde solicitó la asistencia médica?</option>
 									<option class="select-option" value="Delete data">Delete my data</option>
 									<option class="select-option" value="Show me data">Show me my data</option>
@@ -491,7 +519,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <form id="contactForm" data-toggle="validator" data-focus="false">
                             <div class="form-group">
-                                <input type="date" class="form-control-input" id="inicio" required>
+                                <input type="date" class="form-control-input" id="acer_dateFechaTratamiento" required>
                                 <label class="label-control" for="inicio">¿Cuándo inicio el tratamiento?</label>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -503,7 +531,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <form id="contactForm" data-toggle="validator" data-focus="false">
                             <div class="form-group">
-                                <input type="number" class="form-control-input" id="tratamiento" required>
+                                <input type="number" class="form-control-input" id="acer_txtDiasTratamiento" required>
                                 <label class="label-control" for="tratamiento">¿Cuántos días de tratamiento lleva?</label>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -517,12 +545,17 @@
             <!-- end of row -->
         </div>
 
+
+
+
+
+
         <!--Botones finales del formulario-->
         <div class="col-md-2 form-group" style="float: left;">
-            <button type="submit" class="form-control-submit-button1">Cancelar</button>
+            <button type="submit" class="form-control-submit-button1" id="btn_cancelar">Cancelar</button>
         </div>
         <div class="col-md-2 form-group" style="float: left;">
-            <button type="submit" class="form-control-submit-button1">Enviar Encuesta</button>
+            <button type="submit" class="form-control-submit-button1" id="btn_enviar">Enviar Encuesta</button>
         </div>
     </div>
     <!-- Footer -->

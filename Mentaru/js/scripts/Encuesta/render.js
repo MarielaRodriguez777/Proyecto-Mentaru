@@ -43,7 +43,6 @@ const FN_Render_Identificarse = () => {
     let html = '';
 
     if ($('#identificarse').val() == "TELEFONO") {
-        console.log("se ha elegido la opción teléfono");
         html = `
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -60,7 +59,6 @@ const FN_Render_Identificarse = () => {
 		`;
 
     } else if ($('#identificarse').val() == "IDENTIDAD") {
-        console.log("se ha elegido la opción identidad");
         html = `
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -77,17 +75,22 @@ const FN_Render_Identificarse = () => {
 		`;
 
     } else if ($('#identificarse').val() == "PRUEBA") {
+        FN_Peticion_Laboratorios();
+        let htmlLaboratorios = ``;
+        for (let i = 0; i < data_laboratorios.Laboratorios.length; i++) {
+            htmlLaboratorios += `
+			<option class="select-option" value="${data_laboratorios.Laboratorios[i].codigo}">${data_laboratorios.Laboratorios[i].nombre}</option>
+			`;
+        }
 
-        console.log("se ha elegido la opción prueba");
         html = `
 		<div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <form id="contactForm" data-toggle="validator" data-focus="false">
                     <div class="form-group">
-                        <select class="form-control-select form-control form-control-lg" id="laboratorio" required>
+                        <select class="form-control-select form-control form-control-lg" id="laboratorios" required>
 							<option class="select-option" value="" disabled selected>Elija el laboratorio donde se realizó la prueba</option>
-							<option class="select-option" value="Delete data">Delete my data</option>
-							<option class="select-option" value="Show me data">Show me my data</option>
+							${htmlLaboratorios}
 						</select>
                         <div class="help-block with-errors"></div>
                     </div>

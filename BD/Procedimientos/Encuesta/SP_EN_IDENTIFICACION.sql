@@ -287,12 +287,13 @@ BEGIN
 
 
 		-- Accion del procedimiento
-		SELECT psn.idPersona, psn.primerNombre, psn.segundoNombre, psn.primerApellido,  psn.segundoApellido,  psn.numeroIdentidad,  psn.numeroTelefono,  psn.edad,  g.descripcion
+		SELECT psn.idPersona, psn.primerNombre, psn.segundoNombre, psn.primerApellido,  psn.segundoApellido,  psn.numeroIdentidad,  psn.numeroTelefono,  psn.edad, g.idGenero, g.descripcion as "Genero"
 		FROM ListaPruebas lp
 		INNER JOIN Laboratorio l ON l.idLaboratorio = lp.Laboratorio_idLaboratorio
 		INNER JOIN Prueba p ON p.idPrueba = lp.Prueba_idPrueba
 		INNER JOIN Persona psn ON psn.idPersona = p.Persona_idPersona
-		INNER JOIN genero g on g.idGenero=psn.Genero_idGenero;
+		INNER JOIN genero g on g.idGenero=psn.Genero_idGenero
+		where idPersona = @vidpersona;
 
 		SET @pmensaje = 'Finalizado con exito'; -- Cambiar mensaje
 	END;

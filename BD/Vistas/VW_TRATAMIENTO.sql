@@ -6,8 +6,8 @@
 */
 CREATE OR ALTER VIEW VW_TRATAMIENTOS
 AS SELECT
-	t.idTratamiento AS id
-	, t.descripcion AS Tratamiento
+	t.idTratamiento AS idTratamiento
+	, t.descripcion AS nombreTratamiento
 FROM Tratamiento t
 --INNER JOIN...
 --WHERE T1.campo1 = @condicion1
