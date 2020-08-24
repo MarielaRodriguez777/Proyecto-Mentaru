@@ -23,7 +23,8 @@ const FN_Peticion_IdentificarPersona = () => {
      */
     $.ajax({
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/EN_IDENTIFICAR",
+        //url: "http://localhost:3000/api/EN/EN_IDENTIFICAR",
+        url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
         data: {
             "accion": $('#identificarse').val(),
             "numeroIdentidad": $('#txtIdentidad').val(),
@@ -45,6 +46,7 @@ const FN_Peticion_IdentificarPersona = () => {
             console.log(error.responseText);
         }
     });
+    imprimir('Se ha identificado la persona');
 
     FN_Peticion_Departamentos();
     FN_Peticion_Antecedentes();
@@ -59,9 +61,6 @@ const FN_Peticion_IdentificarPersona = () => {
     //FN_Render_Sintomas();
     //FN_Render_Tratamientos();
     //FN_Render_LugarAsistencia();
-
-
-    imprimir('Se ha identificado la persona');
 }
 
 
@@ -78,7 +77,8 @@ const FN_Peticion_Laboratorios = () => {
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_LABORATORIOS",
+        //url: "http://localhost:3000/api/EN/VW_LABORATORIOS",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_LABORATORIOS",
         data: {},
         dataType: "json",
         method: "POST",
@@ -91,12 +91,15 @@ const FN_Peticion_Laboratorios = () => {
     });
 }
 
+
+
 const FN_Peticion_Departamentos = () => {
     // Realizar peticion AJAX
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_MUNICIPIOS",
+        //url: "http://localhost:3000/api/EN/VW_MUNICIPIOS",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_MUNICIPIOS",
         data: {},
         dataType: "json",
         method: "POST",
@@ -122,8 +125,8 @@ const FN_Peticion_Departamentos = () => {
                             departamento.municipios.push(municipio);
                         }
                     }
+                    listaDepartamentos.push(departamento);
                 }
-                listaDepartamentos.push(departamento);
             }
             data_departamentos = listaDepartamentos;
         },
@@ -133,12 +136,15 @@ const FN_Peticion_Departamentos = () => {
     });
 }
 
+
+
 const FN_Peticion_Antecedentes = () => {
     // Realizar peticion AJAX
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_ANTECEDENTESP",
+        //url: "http://localhost:3000/api/EN/VW_ANTECEDENTESP",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_ANTECEDENTESP",
         data: {},
         dataType: "json",
         method: "POST",
@@ -162,7 +168,8 @@ const FN_Peticion_Antecedentes = () => {
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_ANTECEDENTESNP",
+        //url: "http://localhost:3000/api/EN/VW_ANTECEDENTESNP",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_ANTECEDENTESNP",
         data: {},
         dataType: "json",
         method: "POST",
@@ -184,12 +191,15 @@ const FN_Peticion_Antecedentes = () => {
     });
 }
 
+
+
 const FN_Peticion_Sintomas = () => {
     // Realizar peticion AJAX
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_SINTOMAS",
+        //url: "http://localhost:3000/api/EN/VW_SINTOMAS",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_SINTOMAS",
         data: {},
         dataType: "json",
         method: "POST",
@@ -200,7 +210,7 @@ const FN_Peticion_Sintomas = () => {
                 sintoma = {
                     "idSintoma": respuesta.data[i].idSintoma,
                     "nombreSintoma": respuesta.data[i].nombreSintoma,
-                    "tipoSintoma": respuesta.data[i].idTipoSintoma,
+                    "idTipoSintoma": respuesta.data[i].idTipoSintoma,
                     "nombreTipoSiontma": respuesta.data[i].nombreTipoSintoma
                 }
                 ListaSintomas.push(sintoma);
@@ -213,12 +223,15 @@ const FN_Peticion_Sintomas = () => {
     });
 }
 
+
+
 const FN_Peticion_AsistenciaMedica = () => {
     // Realizar peticion AJAX
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_TRATAMIENTOS",
+        //url: "http://localhost:3000/api/EN/VW_TRATAMIENTOS",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_TRATAMIENTOS",
         data: {},
         dataType: "json",
         method: "POST",
@@ -242,7 +255,8 @@ const FN_Peticion_AsistenciaMedica = () => {
     $.ajax({
         async: false,
         //url: "https://mentaru.herokuapp.com/api/EN/EN_IDENTIFICAR",
-        url: "http://localhost:3000/api/EN/VW_LASISTENCIA",
+        //url: "http://localhost:3000/api/EN/VW_LASISTENCIA",
+        url: "https://mentaru.herokuapp.com/api/EN/VW_LASISTENCIA",
         data: {},
         dataType: "json",
         method: "POST",

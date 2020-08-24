@@ -40,3 +40,23 @@ $("#btn-encontrarPrueba").click(function() {
     imprimir('Se ha pulsado el boton ...');
     FN_Peticion_IdentificarPersona();
 });
+
+$("#info_cmbDepartamentos").change(function() {
+    imprimir('Se ha cambiado el valor del combobox ...');
+
+    FN_Render_Municipios();
+});
+
+FN_Peticion_Departamentos();
+FN_Peticion_Antecedentes();
+FN_Peticion_Sintomas();
+FN_Peticion_AsistenciaMedica();
+
+FN_Render_InfoPersona();
+FN_Render_Departamentos();
+//FN_Render_Patologias();
+//FN_Render_NoPatologias();
+//FN_Render_Municipios();
+//FN_Render_Sintomas();
+//FN_Render_Tratamientos();
+//FN_Render_LugarAsistencia();

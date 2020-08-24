@@ -1,15 +1,62 @@
 // Aqui estaran todas las renderizaciones de la pantalla encuesta
 const FN_Render_InfoPersona = () => {
     // Actualizar la informacion del paciente
+    document.getElementById('info_txtNombres').value = data_persona.primerNombre + " " + data_persona.segundoNombre;
+    document.getElementById('info_txtApellidos').value = data_persona.primerApellido + " " + data_persona.segundoApellido;
+    document.getElementById('info_txtIdentidad').value = data_persona.numeroIdentidad;
+    document.getElementById('info_txtTelefono').value = data_persona.numeroTelefono;
+    document.getElementById('info_txtEdad').value = data_persona.edad;
+
+    if (data_persona.idGenero = 1) {
+        document.getElementById('info_optMasculino').checked = true;
+    } else if (data_persona.idGenero = 2) {
+        document.getElementById('info_optFemenino').checked = true;
+    }
+
     imprimir('Se ha actualizado la informacion del paciente');
 }
 
 const FN_Render_Departamentos = () => {
+    let opcionHTML = ``;
+    let mayor = 0;
+    for (let i = 0; i < data_departamentos.length; i++) {
+        if (data_departamentos[i].idDepartamento > mayor) {
+            mayor = data_departamentos[i].idDepartamento;
+            opcionHTML += `
+			<option class="select-option" value="${data_departamentos[i].idDepartamento}">${data_departamentos[i].nombreDepartamento}</option>
+			`;
+        }
+    }
+    let html = `
+		<option class="select-option" value="" disabled selected>Departamento</option>
+		${opcionHTML}
+	`;
+    document.getElementById('info_cmbDepartamentos').innerHTML = html;
+
     // Actualizar combobox de Departamentos
     imprimir('Se ha actualizado el combobox de Departamentos');
 }
 
 const FN_Render_Municipios = () => {
+    let opcionHTML = ``;
+    let idDep = document.getElementById('info_cmbDepartamentos').value;
+    let index = data_departamentos.findIndex(function(el) {
+        return el.idDepartamento == idDep;
+    });
+    for (let i = 0; i < data_departamentos[index].municipios.length; i++) {
+        let id, nombre;
+        id = data_departamentos[index].municipios[i].idMunicipio;
+        nombre = data_departamentos[index].municipios[i].nombreMunicipio;
+        opcionHTML += `
+		<option class="select-option" value="${id}">${nombre}</option>
+		`;
+    }
+    let html = `
+		<option class="select-option" value="" disabled selected>Departamento</option>
+		${opcionHTML}
+	`;
+    document.getElementById('info_cmbMunicipios').innerHTML = html;
+
     // Actualizar combobox de Municipio
     imprimir('Se ha actualizado el combobox de Municipios');
 }

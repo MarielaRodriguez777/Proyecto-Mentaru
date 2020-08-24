@@ -77,17 +77,17 @@ var data_antecedentes = {
 var data_sintomas = [{
     "idSiontma": 1,
     "nombreSintoma": "Tos Seca",
-    "tipoSintoma": 1,
+    "idTipoSintoma": 1,
     "nombreTipoSiontma": "Sintoma Comun"
 }, {
     "idSiontma": 4,
     "nombreSintoma": "Secrecion Nazal",
-    "tipoSintoma": 2,
+    "idTipoSintoma": 2,
     "nombreTipoSiontma": "Sintoma No Comun"
 }, {
     "idSiontma": 8,
     "nombreSintoma": "Fiebre",
-    "tipoSintoma": 3,
+    "idTipoSintoma": 3,
     "nombreTipoSiontma": "Sintoma Grave"
 }]
 

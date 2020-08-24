@@ -10,14 +10,14 @@ module.exports = {
         port: process.env.PORT || 3000
     },
     configDB: {
-        /* server: "sql5057.site4now.net",
+        server: "sql5057.site4now.net",
         database: "DB_A662AE_luisfer15",
         user: "DB_A662AE_luisfer15_admin",
-        password: "extremo15", */
-        server: "localhost",
+        password: "extremo15",
+        /* server: "localhost",
         database: "MENTARUDB",
         user: "sa",
-        password: "1234",
+        password: "1234", */
         port: 1433,
         parseJSON: true
     },
