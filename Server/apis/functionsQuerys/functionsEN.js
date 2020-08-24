@@ -45,7 +45,7 @@ function EN_INFO(req, res) {
         function() {
             var reqDB = new sql.Request(conn);
             reqDB.input('pidPersona', sql.VarChar, req.body.idPersona);
-            reqDB.input('pfecha', sql.VarChar, req.body.fecha);
+            reqDB.input('pidMunicipio', sql.VarChar, req.body.idMunicipio);
             reqDB.input('pidEstadoPaciente', sql.VarChar, req.body.idEstadoPaciente);
             reqDB.input('pnumeroTelefono', sql.VarChar, req.body.numeroTelefono);
             reqDB.input('pnumeroIdentidad', sql.VarChar, req.body.numeroIdentidad);
@@ -158,7 +158,6 @@ function VW_ANTECEDENTESP(req, res) {
             reqDB.query('SELECT * FROM VW_ANTECEDENTESP').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -180,7 +179,6 @@ function VW_ANTECEDENTESNP(req, res) {
             reqDB.query('SELECT * FROM VW_ANTECEDENTESNP').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -202,7 +200,6 @@ function VW_LABORATORIOS(req, res) {
             reqDB.query('SELECT * FROM VW_LABORATORIOS').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -224,7 +221,6 @@ function VW_LASISTENCIA(req, res) {
             reqDB.query('SELECT * FROM VW_LASISTENCIA').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -246,7 +242,6 @@ function VW_MUNICIPIOS(req, res) {
             reqDB.query('SELECT * FROM VW_MUNICIPIOS').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -268,7 +263,6 @@ function VW_SINTOMAS(req, res) {
             reqDB.query('SELECT * FROM VW_SINTOMAS').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);
@@ -290,7 +284,6 @@ function VW_TRATAMIENTOS(req, res) {
             reqDB.query('SELECT * FROM VW_TRATAMIENTOS').then(function(result) {
                 conn.close();
                 res.send(result);
-                console.log(result);
             }).catch(function(err) {
                 conn.close();
                 res.send(messagesMiscelaneos.errorC2);

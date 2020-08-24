@@ -8,8 +8,7 @@ const messagesMiscelaneos = require('../../others/messagesMiscelaneos');
 // DEFINIENDO LAS FUNCIONES
 function ES_GENERAL(req, res) {
     console.log('API ES_GENERAL');
-    res.send('API ES_GENERAL');
-    /* conn.connect().then(
+    conn.connect().then(
         function() {
             var reqDB = new sql.Request(conn);
             reqDB.input('paccion', sql.VarChar, req.body.accion);
@@ -27,7 +26,7 @@ function ES_GENERAL(req, res) {
         function(err) {
             res.send(messagesMiscelaneos.errorC1);
         }
-    ); */
+    );
 };
 
 
