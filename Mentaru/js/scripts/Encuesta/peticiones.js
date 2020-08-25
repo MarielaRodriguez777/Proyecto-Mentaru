@@ -81,7 +81,7 @@ const FN_Peticion_Laboratorios = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_LABORATORIOS",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             data_laboratorios.Laboratorios = respuesta.data;
         },
@@ -102,7 +102,7 @@ const FN_Peticion_Departamentos = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_MUNICIPIOS",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let mayor = 0;
             let listaDepartamentos = [];
@@ -147,7 +147,7 @@ const FN_Peticion_Antecedentes = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_ANTECEDENTESP",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let ListaAntecedentesP = [];
             let antecedentesP = {};
@@ -172,7 +172,7 @@ const FN_Peticion_Antecedentes = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_ANTECEDENTESNP",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let ListaAntecedentesNP = [];
             let antecedentesNP = {};
@@ -202,7 +202,7 @@ const FN_Peticion_Sintomas = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_SINTOMAS",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let ListaSintomas = [];
             let sintoma = {};
@@ -234,7 +234,7 @@ const FN_Peticion_AsistenciaMedica = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_TRATAMIENTOS",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let ListaTratamientos = [];
             let tratamiento = {};
@@ -259,7 +259,7 @@ const FN_Peticion_AsistenciaMedica = () => {
         url: "https://mentaru.herokuapp.com/api/EN/VW_LASISTENCIA",
         data: {},
         dataType: "json",
-        method: "POST",
+        method: "GET",
         success: function(respuesta) {
             let ListaLugarAsistencia = [];
             let lugarAsistencia = {};

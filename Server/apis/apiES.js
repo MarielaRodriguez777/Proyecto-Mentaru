@@ -12,7 +12,7 @@ const apiES = express.Router();
 apiES.post('/ES_GENERAL', functionsES.ES_GENERAL);
 //apiES.post('/ES_', functionsEN.EN_INFO);
 
-apiES.post('/VW_TIPOESTADISTICAS', functionsES.VW_TIPOESTADISTICAS);
+apiES.get('/VW_TIPOESTADISTICAS', functionsES.VW_TIPOESTADISTICAS);
 
 
 
